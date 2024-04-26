@@ -6,6 +6,9 @@
             <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
             <Icon name="line-md:menu-to-close-transition" v-else-if="buttonToggleMenuStatus === 1"></Icon>
             <Icon name="line-md:close-to-menu-alt-transition" v-else></Icon>
+            <Icon name="line-md:menu" v-show="false"></Icon>
+            <Icon name="line-md:menu-to-close-transition" v-show="false"></Icon>
+            <Icon name="line-md:close-to-menu-alt-transition" v-show="false"></Icon>
         </button>
     </header>
     <nav class="nav-fullscreen" :class="{ open: menuOpenClass }">
@@ -24,6 +27,7 @@
 
 <script setup lang="ts">
 import { useMotion } from "@vueuse/motion"
+import { Icon } from "#components"
 const menuOpen = ref<boolean>(false)
 const menuOpenClass = ref<boolean>(false)
 const btnMenuDisabled = ref<boolean>(false)
