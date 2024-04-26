@@ -1,6 +1,10 @@
 <template>
     <header>
-        <NuxtImg class="logo" src="/logos/header-logo.jpg"></NuxtImg>
+        <NuxtImg class="logo" :class="{
+            mobile: isMobile,
+            tablet: isTablet,
+            desktop: isDesktop
+        }" src="/logos/header-logo.jpg"></NuxtImg>
         <div class="spacer" aria-hidden="true"></div>
         <button class="menu-btn" @click="toggleMenu">
             <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
@@ -11,14 +15,19 @@
             <Icon name="line-md:close-to-menu-alt-transition" v-show="false"></Icon>
         </button>
     </header>
-    <nav class="nav-fullscreen" :class="{ open: menuOpenClass }">
+    <nav class="nav-fullscreen" :class="{
+        open: menuOpenClass,
+        mobile: isMobile,
+        tablet: isTablet,
+        desktop: isDesktop
+    }">
         <div class="menu">
             <div class="menu-link-mask" v-for="link of links" :key="link.text"><a href="/" class="menu-link"
                     :ref="(el: any) => setMenuLinkRef(link)(el)">{{ link.text }}</a></div>
         </div>
         <div class="nav-footer" ref="navFooter">
             <a href="mailto:contato@joaotattoo.ink">contato@joaotattoo.ink</a>
-            <span>Tattoo Geek/BlackWork</span>
+            <span v-show="!isMobile">Tattoo Geek/BlackWork</span>
             <a href="tel:3175289908">(31) 7528-9908</a>
         </div>
         <div ref="background" class="nav-fullscreen-background" aria-hidden="true"></div>
@@ -32,6 +41,16 @@ const menuOpen = ref<boolean>(false)
 const menuOpenClass = ref<boolean>(false)
 const btnMenuDisabled = ref<boolean>(false)
 const buttonToggleMenuStatus = ref<0 | 1 | 2>(0)
+const { breakpoint: currentBreakpoint, matches } = useViewport()
+const isMobile = ref(matches('xs'))
+const isTablet = ref(matches('sm', 'md'))
+const isDesktop = ref(matches('lg', 'xl', 'xxl'))
+
+watch(currentBreakpoint, (newValue, oldValue) => {
+    isMobile.value = matches('xs')
+    isTablet.value = matches('sm', 'md')
+    isDesktop.value = matches('lg', 'xl', 'xxl')
+})
 
 type link = {
     ref?: HTMLElement,
@@ -249,6 +268,23 @@ header {
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
+
+        .menu-link {
+            font-family: Raleway, sans-serif;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 80px;
+            color: inherit;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            padding: 16px 0px;
+            transition: color .3s;
+
+            &:hover {
+                color: var(--theme-primary);
+            }
+        }
     }
 
     .nav-footer {
@@ -283,20 +319,29 @@ header {
     }
 }
 
-.menu-link {
-    font-family: Raleway, sans-serif;
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 80px;
-    color: inherit;
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-    padding: 16px 0px;
-    transition: color .3s;
+.nav-fullscreen.tablet {
+    .menu-link {
+        font-size: 48px;
+    }
 
-    &:hover {
-        color: var(--theme-primary);
+    .nav-footer {
+        padding: 0px 40px 40px 40px;
+    }
+}
+
+.nav-fullscreen.mobile {
+    .menu-link {
+        font-size: 32px;
+    }
+
+    .nav-footer {
+        padding: 0px 24px 24px 24px;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+
+        * {
+            font-size: 15px;
+        }
     }
 }
 
