@@ -2,7 +2,11 @@
     <header>
         <NuxtImg class="logo" src="/logos/header-logo.jpg"></NuxtImg>
         <div class="spacer" aria-hidden="true"></div>
-        <button class="menu-btn" @click="toggleMenu">=</button>
+        <button class="menu-btn" @click="toggleMenu">
+            <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
+            <Icon name="line-md:menu-to-close-transition" v-else-if="buttonToggleMenuStatus === 1"></Icon>
+            <Icon name="line-md:close-to-menu-alt-transition" v-else></Icon>
+        </button>
     </header>
     <nav class="nav-fullscreen" :class="{ open: menuOpenClass }">
         <div class="menu">
@@ -23,6 +27,7 @@ import { useMotion } from "@vueuse/motion"
 const menuOpen = ref<boolean>(false)
 const menuOpenClass = ref<boolean>(false)
 const btnMenuDisabled = ref<boolean>(false)
+const buttonToggleMenuStatus = ref<0 | 1 | 2>(0)
 
 type link = {
     ref?: HTMLElement,
@@ -118,8 +123,10 @@ const toggleMenu = () => {
     menuOpen.value = !menuOpen.value
     if (menuOpen.value) {
         menuOpenClass.value = true
+        buttonToggleMenuStatus.value = 1
     }
     if (!menuOpen.value) {
+        buttonToggleMenuStatus.value = 2
         setTimeout(() => {
             menuOpenClass.value = false
         }, menuAnimations.close.backgroundDelay + menuAnimations.close.backgroundDuration)
@@ -180,8 +187,17 @@ header {
     }
 
     .menu-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         float: right;
         justify-self: end;
+        height: 100%;
+        aspect-ratio: 1/1;
+        font-size: 48px;
+        background-color: white;
+        border: none;
+        outline: none;
     }
 
     .logo {
