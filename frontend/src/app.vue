@@ -1,8 +1,9 @@
 <template>
   <ModulesThemeProvider>
+    <!-- <TemplatesLoadingIndicator /> -->
     <div id="root">
       <NuxtLayout>
-        ola mundo
+        <NuxtPage />
       </NuxtLayout>
     </div>
   </ModulesThemeProvider>

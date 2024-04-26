@@ -1,8 +1,9 @@
 <template>
     <div>
         <TemplatesHeader></TemplatesHeader>
-        a
-        <slot></slot>
+        <main>
+            <slot></slot>
+        </main>
 
     </div>
 </template>

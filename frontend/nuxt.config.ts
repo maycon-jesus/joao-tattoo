@@ -8,5 +8,5 @@ export default defineNuxtConfig({
     '~/assets/css/global/fonts.scss'
   ],
 
-  modules: ["@nuxt/image"]
+  modules: ["@nuxt/image", "@pinia/nuxt"]
 })
