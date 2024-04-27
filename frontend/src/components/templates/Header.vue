@@ -5,7 +5,7 @@
         desktop: isDesktop,
         fixed: navOpen
     }">
-        <NuxtImg class="logo" src="/logos/logo-branca.png" sizes="65px xs:75px"></NuxtImg>
+        <NuxtImg class="logo" src="/logos/logo-branca.png" sizes="65px xs:75px" preload></NuxtImg>
         <div class="spacer" aria-hidden="true"></div>
         <button class="menu-btn" @click="toggleMenu">
             <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
@@ -94,5 +94,10 @@ header {
 
 header.mobile {
     height: 65px;
+    padding-left: 16px;
+}
+
+header.tablet {
+    padding-left: 25px;
 }
 </style>
