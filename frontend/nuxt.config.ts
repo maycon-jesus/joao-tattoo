@@ -4,8 +4,8 @@ export default defineNuxtConfig({
   srcDir: 'src/',
 
   css: [
+    '~/assets/css/global/fonts.scss',
     '~/assets/css/global/normalize.css',
-    '~/assets/css/global/fonts.scss'
   ],
 
   modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport"],

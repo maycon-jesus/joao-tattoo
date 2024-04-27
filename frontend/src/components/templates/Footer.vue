@@ -1,13 +1,32 @@
 <template>
     <footer>
-        <div>
-            Parte esquerda
+        <div class="contact">
+            <div>
+                <NuxtImg class="logo" src="/logos/footer-logo.png" height="80" />
+
+            </div>
+            <div class="links-text">
+                <a v-for="(social, index) of socialsText" :key="index" :href="social.url" target="_blank" class="link">
+                    <Icon :name="social.icon" aria-hidden="true" class="icon"></Icon>
+                    <span>{{ social.text }}</span>
+                </a>
+            </div>
+            <div class="links-icon">
+                <a v-for="(social, index) of socialsIcon" :key="index" :href="social.url" target="_blank" class="link"
+                    :title="social.text" :aria-label="social.text">
+                    <Icon :name="social.icon" aria-hidden="true" class="icon"></Icon>
+                </a>
+            </div>
         </div>
         <!-- Coluna 2 -->
         <div class="column">
             <!-- Linha dos links -->
             <div class="nav-links">
-                a
+                <a href="/" class="link">{{ texts.links.home }}</a>
+                <a href="/" class="link">{{ texts.links.aboutMe }}</a>
+                <a href="/" class="link">{{ texts.links.services }}</a>
+                <a href="/" class="link">{{ texts.links.portfolio }}</a>
+                <a href="/" class="link">{{ texts.links.contact }}</a>
             </div>
             <!-- Linha de sobre -->
             <div class="about-links">
@@ -27,6 +46,10 @@
 </template>
 
 <script lang="ts" setup>
+const { texts, socials } = useAppConfig()
+
+const socialsText = socials.filter(social => social.visibility.footerText)
+const socialsIcon = socials.filter(social => social.visibility.footerIcon)
 </script>
 
 <style scoped lang="scss">
@@ -36,23 +59,67 @@ footer {
     display: grid;
     grid-template-columns: 1fr 2fr;
 
+    .contact {
+        padding: 5%;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 20px;
+
+        .links-text {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 5px;
+
+            .link {
+                .icon {
+                    font-size: 170%;
+                    margin-right: 5px
+                }
+
+                * {
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .links-icon {
+            margin-top: 10px;
+
+            .link {
+                .icon {
+                    font-size: 32px;
+                    margin-right: 5px
+                }
+            }
+        }
+
+    }
+
     .column {
         display: grid;
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: 1fr auto;
         border-left: 1px solid white;
     }
 
     .nav-links {
         display: flex;
         flex-flow: row wrap;
-        padding: 48px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5%;
         border-bottom: 1px solid white;
+        font-size: 16px;
+        font-weight: 600;
+
+        .link {
+            text-transform: uppercase;
+        }
     }
 
     .about-links {
         display: flex;
         flex-flow: row wrap;
-        padding: 48px;
+        padding: 5%;
 
         &>*:not(:last-child)::after {
             content: "\25CF";

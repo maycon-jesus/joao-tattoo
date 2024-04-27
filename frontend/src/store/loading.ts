@@ -1,14 +1,25 @@
 import { defineStore } from 'pinia';
 
 export const loadingStore = defineStore('loading', {
-    state() {
+    state(): {
+        itemsLoading: Set<string>
+    } {
         return {
-            loading: false
+            itemsLoading: new Set()
+        }
+    },
+    getters: {
+        loading(state) {
+            return state.itemsLoading.size > 0;
         }
     },
     actions: {
-        setLoading(val: boolean) {
-            this.loading = val;
+        startLoading(itemName: string) {
+            this.itemsLoading.add(itemName)
+        },
+        endLoading(itemName: string) {
+
+            this.itemsLoading.delete(itemName)
         }
     }
 })

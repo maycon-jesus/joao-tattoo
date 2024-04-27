@@ -5,11 +5,11 @@ export default defineNuxtPlugin({
     hooks: {
         'page:loading:start'() {
             const loading = loadingStore()
-            loading.setLoading(true)
+            loading.startLoading('pageLoading')
         },
         'page:loading:end'() {
             const loading = loadingStore()
-            loading.setLoading(false)
+            loading.endLoading('pageLoading')
         }
     }
 })

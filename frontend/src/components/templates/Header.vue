@@ -5,7 +5,8 @@
         desktop: isDesktop,
         fixed: navOpen
     }">
-        <NuxtImg class="logo" src="/logos/logo-branca.png" sizes="65px xs:75px" preload></NuxtImg>
+        <NuxtImg class="logo" src="/logos/header-logo.png" sizes="143px xs:155px" preload
+            @load="loading.endLoading('image:header:logo')"></NuxtImg>
         <div class="spacer" aria-hidden="true"></div>
         <button class="menu-btn" @click="toggleMenu">
             <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
@@ -22,10 +23,15 @@
 
 <script setup lang="ts">
 import { Icon } from "#components"
+import { loadingStore } from "~/store/loading";
+
+const { breakpoint: currentBreakpoint, matches } = useViewport()
+const loading = loadingStore()
+loading.startLoading('image:header:logo')
+
 const btnMenuDisabled = ref<boolean>(false)
 const navOpen = ref<boolean>(false)
 const buttonToggleMenuStatus = ref<0 | 1 | 2>(0)
-const { breakpoint: currentBreakpoint, matches } = useViewport()
 const isMobile = ref(matches('xs'))
 const isTablet = ref(matches('sm', 'md'))
 const isDesktop = ref(matches('lg', 'xl', 'xxl'))

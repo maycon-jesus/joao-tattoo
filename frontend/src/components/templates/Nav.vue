@@ -279,7 +279,6 @@ watch(propsOpen, (newValue) => {
             font-weight: 600;
             font-size: 17px;
             text-decoration: none;
-            font-family: "Barlow", sans-serif;
 
             &:nth-child(1) {
                 text-align: start

@@ -1,9 +1,9 @@
 <template>
-    <div class="loading" :class="{ loaded }" v-if="!hideLoading"">
+    <div class="loading" :class="{ loaded }" v-if="!hideLoading">
         <NuxtImg class=" logo-saturada" src="/logos/logo-branca.png" height="256px" alt="" />
-    <div class="logo-mask">
-        <div class="logo-mask-img"></div>
-    </div>
+        <div class="logo-mask">
+            <div class="logo-mask-img"></div>
+        </div>
     </div>
 </template>
 
