@@ -18,8 +18,8 @@ watch(() => loading.loading, (newValue) => {
     if (!newValue) {
         loaded.value = true
         setTimeout(() => {
-            // hideLoading.value = true
-        }, 1500)
+            hideLoading.value = true
+        }, 3000)
     } else {
         loaded.value = false
         hideLoading.value = true
@@ -67,15 +67,19 @@ watch(() => loading.loading, (newValue) => {
 .loading.loaded {
     @keyframes loaded {
         0% {
-            opacity: 1;
+            transform: translateY(0);
+            border-bottom: 22vh solid var(--theme-background);
         }
 
         100% {
-            opacity: 0;
+            transform: translateY(-100%);
+            border-bottom: 1vh solid var(--theme-primary);
         }
     }
 
-    animation: loaded .5s forwards 1 1.5s;
+    animation: loaded forwards;
+    animation-duration: .8s;
+    animation-delay: 2.2s;
 
     @keyframes loadedMask {
         0% {
@@ -89,8 +93,9 @@ watch(() => loading.loading, (newValue) => {
 
 
     .logo-mask-img {
-        animation: loadedMask 2s forwards 1;
-        animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+        animation: loadedMask forwards;
+        animation-duration: 2s;
+        animation-timing-function: linear;
     }
 }
 </style>
