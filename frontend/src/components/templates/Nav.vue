@@ -21,6 +21,7 @@
 <script lang="ts" setup>
 import { useMotion } from '@vueuse/motion';
 
+const { themes: { default: { menuBackground } } } = useAppConfig()
 const { breakpoint: currentBreakpoint, matches } = useViewport()
 const isMobile = ref(matches('xs'))
 const isTablet = ref(matches('sm', 'md'))
@@ -223,7 +224,7 @@ watch(propsOpen, (newValue) => {
     }
 
     .nav-fullscreen-background {
-        background-color: black;
+        background-color: v-bind(menuBackground);
         position: absolute;
         top: 0;
         left: 0;
