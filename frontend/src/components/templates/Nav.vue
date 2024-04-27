@@ -44,12 +44,6 @@ const emit = defineEmits<{
     (e: 'animation:start'): void
 }>()
 
-onNuxtReady(() => {
-    setTimeout(() => {
-        propsOpen.value = true
-    }, 1000)
-})
-
 watch(() => props.open, (newValue) => {
     propsOpen.value = newValue
 })
