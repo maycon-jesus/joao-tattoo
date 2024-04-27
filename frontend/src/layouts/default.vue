@@ -9,6 +9,9 @@
 </template>
 
 <script setup lang="ts">
+import { loadingStore } from '~/store/loading';
+
+const loading = loadingStore()
 useHead({
     title: 'João Tattoo',
     meta: [

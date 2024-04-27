@@ -1,7 +1,7 @@
 <template>
   <ModulesThemeProvider>
     <!-- <TemplatesLoadingIndicator /> -->
-    <NuxtLoadingIndicator />
+    <TemplatesLoading />
     <div id="root">
       <NuxtLayout>
         <NuxtPage />
