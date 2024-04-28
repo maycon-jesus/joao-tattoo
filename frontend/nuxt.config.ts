@@ -19,8 +19,8 @@ export default defineNuxtConfig({
       xl: 2559,
       xxl: 2560
     },
-    quality: 90,
-    format: ['avif', 'webp'],
+    quality: 80,
+    format: ['webp'],
     densities: [1, 2, 3]
   },
 
