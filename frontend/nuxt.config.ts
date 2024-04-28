@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '~/assets/css/global/normalize.css',
   ],
 
-  modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport"],
+  modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport", "nuxt-delay-hydration"],
 
   image: {
     screens: {
@@ -45,5 +45,7 @@ export default defineNuxtConfig({
     }
   },
 
-
+  delayHydration: {
+    mode: 'mount'
+  }
 })
