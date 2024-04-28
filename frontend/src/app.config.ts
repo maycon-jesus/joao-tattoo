@@ -28,9 +28,9 @@ export default defineAppConfig({
             }
         },
         {
-            text: '@joaotattoo',
+            text: '@joaov_tattoo',
             icon: 'ph:instagram-logo-light',
-            url: 'https://www.instagram.com/joaotattoo/',
+            url: 'https://www.instagram.com/joaov_tattoo',
             visibility: {
                 footerText: true,
                 footerIcon: false

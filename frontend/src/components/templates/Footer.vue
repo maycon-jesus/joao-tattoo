@@ -1,9 +1,8 @@
 <template>
-    <footer>
+    <footer :class="{ tablet: tablet, mobile }">
         <div class="contact">
             <div>
                 <NuxtImg class="logo" src="/logos/footer-logo.png" height="80" />
-
             </div>
             <div class="links-text">
                 <a v-for="(social, index) of socialsText" :key="index" :href="social.url" target="_blank" class="link">
@@ -47,9 +46,17 @@
 
 <script lang="ts" setup>
 const { texts, socials } = useAppConfig()
+const { breakpoint, isLessThan } = useViewport()
 
 const socialsText = socials.filter(social => social.visibility.footerText)
 const socialsIcon = socials.filter(social => social.visibility.footerIcon)
+const tablet = ref(isLessThan('md'))
+const mobile = ref(isLessThan('sm'))
+
+watch(breakpoint, () => {
+    tablet.value = isLessThan('md')
+    mobile.value = isLessThan('sm')
+})
 </script>
 
 <style scoped lang="scss">
@@ -110,6 +117,7 @@ footer {
         border-bottom: 1px solid white;
         font-size: 16px;
         font-weight: 600;
+        gap: 16px;
 
         .link {
             text-transform: uppercase;
@@ -120,6 +128,8 @@ footer {
         display: flex;
         flex-flow: row wrap;
         padding: 5%;
+        line-height: 170%;
+        font-size: 11px;
 
         &>*:not(:last-child)::after {
             content: "\25CF";
@@ -142,6 +152,21 @@ footer {
         &:hover {
             color: var(--theme-primary);
         }
+    }
+}
+
+footer.tablet {
+    grid-template-columns: 1fr;
+
+    .column {
+        border-left: none;
+        border-top: 1px solid white;
+    }
+}
+
+footer.mobile {
+    .nav-links {
+        font-size: 12px;
     }
 }
 </style>

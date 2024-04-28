@@ -11,7 +11,7 @@
         </div>
         <div class="nav-footer" ref="navFooter">
             <a href="mailto:contato@joaotattoo.ink">contato@joaotattoo.ink</a>
-            <span v-show="!isMobile">Tattoo Geek/BlackWork</span>
+            <span v-show="isDesktop">Tattoo Geek/BlackWork</span>
             <a href="tel:3175289908">(31) 7528-9908</a>
         </div>
         <div ref="background" class="nav-fullscreen-background" aria-hidden="true"></div>
@@ -22,7 +22,7 @@
 import { useMotion } from '@vueuse/motion';
 
 const { themes: { default: { menuBackground } } } = useAppConfig()
-const { breakpoint: currentBreakpoint, matches } = useViewport()
+const { breakpoint: currentBreakpoint, matches, isLessThan } = useViewport()
 const isMobile = ref(matches('xs'))
 const isTablet = ref(matches('sm', 'md'))
 const isDesktop = ref(matches('lg', 'xl', 'xxl'))
@@ -309,7 +309,10 @@ watch(propsOpen, (newValue) => {
     .menu-link {
         font-size: 32px;
     }
+}
 
+.nav-fullscreen.tablet,
+.nav-fullscreen.mobile {
     .nav-footer {
         padding: 0px 24px 24px 24px;
         grid-template-columns: repeat(2, 1fr);
