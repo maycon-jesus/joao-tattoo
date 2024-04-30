@@ -5,8 +5,12 @@
         desktop: isDesktop,
         fixed: navOpen
     }">
-        <NuxtImg class="logo" src="/logos/header-logo.png" sizes="143px xs:155px" preload
+        <NuxtImg class="logo" v-if="isMobile" :src="headerConfig.logo.mobile.url"
+            :height="headerConfig.logo.mobile.height" :width="headerConfig.logo.mobile.width" preload
             @load="loading.endLoading('image:header:logo')"></NuxtImg>
+        <NuxtImg class="logo" v-else :src="headerConfig.logo.desktop.url" :height="headerConfig.logo.desktop.height"
+            :width="headerConfig.logo.desktop.width" preload @load="loading.endLoading('image:header:logo')"></NuxtImg>
+
         <div class="spacer" aria-hidden="true"></div>
         <button class="menu-btn" @click="toggleMenu">
             <Icon name="line-md:menu" v-if="buttonToggleMenuStatus === 0"></Icon>
@@ -24,6 +28,7 @@
 <script setup lang="ts">
 import { Icon } from "#components"
 import { loadingStore } from "~/store/loading";
+const { header: headerConfig } = useAppConfig()
 
 const { breakpoint: currentBreakpoint, matches } = useViewport()
 const loading = loadingStore()

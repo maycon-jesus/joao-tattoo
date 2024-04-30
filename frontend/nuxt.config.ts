@@ -21,7 +21,12 @@ export default defineNuxtConfig({
     },
     quality: 80,
     format: ['webp'],
-    densities: [1, 2, 3]
+    provider: "imagekit",
+    densities: [1, 2, 3],
+
+    imagekit: {
+      baseURL: 'https://ik.imagekit.io/vdk8w7x8i'
+    }
   },
 
   viewport: {

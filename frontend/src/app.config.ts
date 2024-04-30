@@ -1,4 +1,8 @@
+import { headerConfig } from "~~/config/header";
+
 export default defineAppConfig({
+    header: headerConfig,
+
     themes: {
         default: {
             background: '#0F0F0F',

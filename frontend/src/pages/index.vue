@@ -1,5 +1,6 @@
 <template>
     <div>
+        <HomeSectionIntro />
         <div>a</div>
         <div>a</div>
         <div>a</div>

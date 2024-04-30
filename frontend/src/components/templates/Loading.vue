@@ -19,7 +19,7 @@ watch(() => loading.loading, (newValue) => {
         loaded.value = true
         setTimeout(() => {
             hideLoading.value = true
-        }, 3000)
+        }, 2300)
     } else {
         loaded.value = false
         hideLoading.value = true
@@ -79,7 +79,7 @@ watch(() => loading.loading, (newValue) => {
 
     animation: loaded forwards;
     animation-duration: .8s;
-    animation-delay: 2.2s;
+    animation-delay: 1.5s;
 
     @keyframes loadedMask {
         0% {
@@ -94,7 +94,7 @@ watch(() => loading.loading, (newValue) => {
 
     .logo-mask-img {
         animation: loadedMask forwards;
-        animation-duration: 2s;
+        animation-duration: 1.5s;
         animation-timing-function: linear;
     }
 }
