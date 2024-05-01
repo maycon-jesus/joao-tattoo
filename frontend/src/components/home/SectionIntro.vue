@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="right">
-            <NuxtImg src="/home/slider1.jpg" class="img-slider"></NuxtImg>
+            <NuxtImg src="/home/slider1.jpg" class="img-slider" placeholder></NuxtImg>
         </div>
     </section>
 </template>
