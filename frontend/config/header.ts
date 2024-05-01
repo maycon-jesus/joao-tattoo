@@ -3,12 +3,12 @@ export const headerConfig = {
         "mobile": {
             "url": "/logos/header-logo.png",
             "height": 65,
-            "width": 143.92
+            "width": 143.53
         },
         "desktop": {
             "url": "/logos/header-logo.png",
-            "height": 70,
-            "width": 155
+            "height": 80,
+            "width": 176.65
         }
     }
 }

@@ -68,8 +68,8 @@ header {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    height: 70px;
-    padding-left: 50px;
+    height: 80px;
+    padding-left: 25px;
     z-index: 300;
     width: 100%;
     box-sizing: border-box;
