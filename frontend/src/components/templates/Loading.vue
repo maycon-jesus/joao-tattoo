@@ -1,6 +1,7 @@
 <template>
     <div class="loading" :class="{ loaded }" v-if="!hideLoading">
-        <NuxtImg class=" logo-saturada" src="/logos/logo-branca.png" height="256px" alt="" />
+        <NuxtImg class=" logo-saturada" src="/logos/logo-branca.png" height="256px" alt=""
+            :placeholder="[64, 64, 50, -1]" />
         <div class="logo-mask">
             <div class="logo-mask-img"></div>
         </div>
@@ -23,7 +24,7 @@ watch(() => loading.loading, (newValue) => {
         }, 2300)
     } else {
         loaded.value = false
-        hideLoading.value = true
+        hideLoading.value = false
     }
 })
 
