@@ -21,7 +21,7 @@ watch(() => loading.loading, (newValue) => {
         loaded.value = true
         setTimeout(() => {
             hideLoading.value = true
-        }, 2300)
+        }, 100)
     } else {
         loaded.value = false
         hideLoading.value = false
