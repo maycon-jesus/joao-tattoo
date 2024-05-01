@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-hidden teste-anima dots" ref="container">
+    <div class="overflow-hidden teste-anima" ref="container">
         <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal">
             <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[0]" :key="`l1-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
@@ -32,9 +32,12 @@ const loading = loadingStore()
 const container = ref<HTMLElement>()
 const containerHeight = ref(0)
 
-const imagesToLoad = [
+const imagesPerfil = [
     '/home/perfil.jpg',
     '/home/perfil2.jpg',
+]
+
+const imagesToLoad = [
     '/home/slider1.jpg',
     '/home/slider2.jpg',
     '/home/slider3.jpg',
@@ -44,7 +47,6 @@ const imagesToLoad = [
     '/home/slider7.jpg',
     '/home/slider8.jpg',
     '/home/slider9.jpg',
-
     '/home/slider10.jpg',
     '/home/slider11.jpg',
     '/home/slider12.jpg',
@@ -63,15 +65,15 @@ const imageScrollHeight = computed(() => {
 })
 
 onNuxtReady(() => {
-    for (const image of imagesToLoad) {
-        const imgLoad = new Image()
-        const imgUrl = img(image)
-        loading.startLoading(`img:${image}`)
-        imgLoad.src = imgUrl
-        imgLoad.onload = () => {
-            loading.endLoading(`img:${image}`)
-        }
-    }
+    // for (const image of imagesToLoad) {
+    //     const imgLoad = new Image()
+    //     const imgUrl = img(image)
+    //     loading.startLoading(`img:${image}`)
+    //     imgLoad.src = imgUrl
+    //     imgLoad.onload = () => {
+    //         loading.endLoading(`img:${image}`)
+    //     }
+    // }
 
     containerHeight.value = container.value?.getBoundingClientRect().height || 0
 })
@@ -83,8 +85,19 @@ const imagesToShow = useState<string[][]>(() => [
 ])
 
 onMounted(() => {
-    for (let i = 0; i < 25; i++) {
-        for (const line of imagesToShow.value) {
+    for (let lineIndex = 0; lineIndex < imagesToShow.value.length; lineIndex++) {
+        const line = imagesToShow.value[lineIndex]
+        let count = -1
+
+        for (let i = 0; i < 25; i++) {
+            count++
+            if (lineIndex === 1) {
+                if (count % 5 == 0) {
+                    console.log(count)
+                    line.push(imagesPerfil[Math.floor(Math.random() * imagesPerfil.length)])
+                    continue
+                }
+            }
             line.push(imagesToLoad[Math.floor(Math.random() * imagesToLoad.length)])
         }
     }
@@ -96,10 +109,9 @@ onMounted(() => {
                 line.push(line[i])
             }
         } else {
-            for (let i = 25; i > 0; i--) {
-                line.unshift(line[i - 1])
-                console.log(line.length)
-            }
+            // for (let i = 25; i > 0; i--) {
+            //     line.unshift(line[i - 1])
+            // }
         }
     }
 })
@@ -154,7 +166,7 @@ onMounted(() => {
         }
 
         &:nth-child(2) {
-            animation: testeMeio 120s linear 0s infinite alternate-reverse forwards;
+            animation: testeMeio 120s linear 0s infinite alternate forwards;
         }
 
     }
