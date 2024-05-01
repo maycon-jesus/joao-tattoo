@@ -26,6 +26,7 @@ export default defineAppConfig({
             text: '(31) 97528-9908',
             icon: 'ph:whatsapp-logo-light',
             url: 'https://api.whatsapp.com/send?phone=5531975289908',
+            tags: ['home-section-intro-budget'],
             visibility: {
                 footerText: true,
                 footerIcon: false
