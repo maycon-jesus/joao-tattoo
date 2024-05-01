@@ -64,7 +64,9 @@ watch(navOpen, (open) => {
 
 <style lang="scss" scoped>
 header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { loadingStore } from '~/store/loading';
 
+const img = useImage()
 const loading = loadingStore()
 const loaded = ref(false)
 const hideLoading = ref(false)
@@ -24,6 +25,14 @@ watch(() => loading.loading, (newValue) => {
         loaded.value = false
         hideLoading.value = true
     }
+})
+
+const imageLogoUrl = computed(() => {
+    const url = img('/logos/logo-branca.png', {
+        height: 256,
+        width: 256
+    })
+    return `url(${url})`
 })
 </script>
 
@@ -57,7 +66,7 @@ watch(() => loading.loading, (newValue) => {
 
         .logo-mask-img {
             height: 100%;
-            mask-image: url(/logos/logo-branca.png);
+            mask-image: v-bind(imageLogoUrl);
             mask-size: 256px 256px;
             background-color: #ccc;
         }
