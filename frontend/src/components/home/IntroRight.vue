@@ -33,10 +33,10 @@ const container = ref<HTMLElement>()
 const containerHeight = ref(0)
 
 const imagesToLoad = [
-    '/home/slider1.jpg',
-    '/home/slider2.jpg',
     '/home/perfil.jpg',
     '/home/perfil2.jpg',
+    '/home/slider1.jpg',
+    '/home/slider2.jpg',
     '/home/slider3.jpg',
     '/home/slider4.jpg',
     '/home/slider5.jpg',
