@@ -1,8 +1,15 @@
 <template>
-    <section class="section-container gap-x-4">
-        <div class="left pl-12">
+    <section class="section-container gap-x-4" :class="{
+        mobile: isMobile
+    }">
+        <div class="left" :class="{
+            'pl-12': !isMobile,
+            'px-6': isMobile
+        }">
             <div class="text-wrapper">
-                <h1 class="mb-6"><span class="primary-text">Especialista</span> em Geek & BlackWork</h1>
+                <h1 class="mb-6" un-text="4xl sm:5xl md:6xl"><span class="primary-text">Especialista</span> em Geek &
+                    BlackWork
+                </h1>
                 <p class="description" un-text="lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                     varius enim in
                     eros elementum
@@ -14,13 +21,18 @@
             </div>
         </div>
         <div class="right">
-            <HomeIntroRight />
+            <HomeIntroRight :mobile="isMobile" />
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
 const { socials } = useAppConfig()
+const { breakpoint } = useViewport()
+
+const isMobile = computed(() => {
+    return breakpoint.value === 'xs' || breakpoint.value === 'sm'
+})
 
 const budgetSocial = socials.find(s => s.tags?.includes('home-section-intro-budget'))
 const budgetSocialUrl = budgetSocial?.url || '/'
@@ -41,7 +53,6 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 
     h1 {
         font-family: "Raleway", sans-serif;
-        font-size: 58px;
         color: white;
         font-weight: 800;
     }
@@ -62,5 +73,15 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 .right {
     height: 100%;
     position: relative;
+}
+
+.section-container.mobile {
+    padding-top: 120px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto 450px;
+
+    .left {
+        margin-bottom: 50px;
+    }
 }
 </style>

@@ -1,12 +1,14 @@
 <template>
     <div class="overflow-hidden teste-anima" ref="container">
-        <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal">
-            <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[0]" :key="`l1-${index}`">
+        <!-- desktop -->
+        <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal"
+            v-if="!props.mobile">
+            <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[2]" :key="`l1-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
                 </NuxtImg>
             </div>
         </div>
-        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2">
+        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2" v-if="!props.mobile">
             <div class="image-wrapper p-2" :class="{
                 'row-span-2': index % 5 == 0,
                 'col-span-2': index % 5 == 0
@@ -15,8 +17,25 @@
                 </NuxtImg>
             </div>
         </div>
-        <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal">
-            <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[2]" :key="`l3-${index}`">
+        <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal"
+            v-if="!props.mobile">
+            <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[3]" :key="`l3-${index}`">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                </NuxtImg>
+            </div>
+        </div>
+
+        <!-- mobile -->
+        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2">
+            <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[0]"
+                :key="`l2-${index}`">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                </NuxtImg>
+            </div>
+        </div>
+        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2">
+            <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[1]"
+                :key="`l2-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
                 </NuxtImg>
             </div>
@@ -25,10 +44,10 @@
 </template>
 
 <script setup lang="ts">
-import { loadingStore } from '~/store/loading';
+const props = defineProps<{
+    mobile: Boolean,
+}>()
 
-const img = useImage()
-const loading = loadingStore()
 const container = ref<HTMLElement>()
 const containerHeight = ref(0)
 
@@ -64,6 +83,10 @@ const imageScrollHeight = computed(() => {
     return `${containerHeight.value / 4}px`
 })
 
+function onResize() {
+    containerHeight.value = container.value?.getBoundingClientRect().height || 0
+}
+
 onNuxtReady(() => {
     // for (const image of imagesToLoad) {
     //     const imgLoad = new Image()
@@ -76,10 +99,17 @@ onNuxtReady(() => {
     // }
 
     containerHeight.value = container.value?.getBoundingClientRect().height || 0
+
+    window.addEventListener('resize', onResize)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', onResize)
 })
 
 const imagesToShow = useState<string[][]>(() => [
-    [],
+    [], // has perfil a cada 3
+    [], // has perfil a cada 5
     [],
     []
 ])
@@ -91,27 +121,21 @@ onMounted(() => {
 
         for (let i = 0; i < 25; i++) {
             count++
-            if (lineIndex === 1) {
-                if (count % 5 == 0) {
-                    console.log(count)
+            if (lineIndex === 0) {
+                if (count % 3 == 0) {
                     line.push(imagesPerfil[Math.floor(Math.random() * imagesPerfil.length)])
                     continue
                 }
             }
-            line.push(imagesToLoad[Math.floor(Math.random() * imagesToLoad.length)])
-        }
-    }
-    for (let lineIndex = 0; lineIndex < imagesToShow.value.length; lineIndex++) {
-        const line = imagesToShow.value[lineIndex]
 
-        if (lineIndex !== 1) {
-            for (let i = 0; i < 25; i++) {
-                line.push(line[i])
+            if (lineIndex === 1) {
+                if (count % 5 == 0) {
+                    line.push(imagesPerfil[Math.floor(Math.random() * imagesPerfil.length)])
+                    continue
+                }
             }
-        } else {
-            // for (let i = 25; i > 0; i--) {
-            //     line.unshift(line[i - 1])
-            // }
+
+            line.push(imagesToLoad[Math.floor(Math.random() * imagesToLoad.length)])
         }
     }
 })

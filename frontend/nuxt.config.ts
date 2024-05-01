@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '~/assets/css/global/normalize.css',
   ],
 
-  modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport", "nuxt-delay-hydration", "@unocss/nuxt"],
+  modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport", /*"nuxt-delay-hydration",*/ "@unocss/nuxt"],
 
   image: {
     screens: {
