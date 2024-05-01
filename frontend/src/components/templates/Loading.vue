@@ -14,13 +14,15 @@ const img = useImage()
 const loading = loadingStore()
 const loaded = ref(false)
 const hideLoading = ref(false)
+const loadingProgress = computed(() => loading.loadingProgress)
 
 watch(() => loading.loading, (newValue) => {
     if (!newValue) {
         loaded.value = true
         setTimeout(() => {
             hideLoading.value = true
-        }, 2300)
+        }, 600)
+        // }, 2300)
     } else {
         loaded.value = false
         hideLoading.value = false
@@ -69,6 +71,8 @@ const imageLogoUrl = computed(() => {
             mask-image: v-bind(imageLogoUrl);
             mask-size: 256px 256px;
             background-color: #ccc;
+            width: v-bind(loadingProgress);
+            transition: .1s;
         }
     }
 }
@@ -87,24 +91,7 @@ const imageLogoUrl = computed(() => {
     }
 
     animation: loaded forwards;
-    animation-duration: .8s;
-    animation-delay: 1.5s;
-
-    @keyframes loadedMask {
-        0% {
-            width: 0%;
-        }
-
-        100% {
-            width: 100%;
-        }
-    }
-
-
-    .logo-mask-img {
-        animation: loadedMask forwards;
-        animation-duration: 1.5s;
-        animation-timing-function: linear;
-    }
+    animation-duration: .5s;
+    animation-delay: .1s;
 }
 </style>
