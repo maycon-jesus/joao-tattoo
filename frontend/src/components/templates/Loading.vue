@@ -21,7 +21,7 @@ watch(() => loading.loading, (newValue) => {
         loaded.value = true
         setTimeout(() => {
             hideLoading.value = true
-        }, 600)
+        }, 1000)
         // }, 2300)
     } else {
         loaded.value = false
@@ -72,7 +72,7 @@ const imageLogoUrl = computed(() => {
             mask-size: 256px 256px;
             background-color: #ccc;
             width: v-bind(loadingProgress);
-            transition: .1s;
+            transition: .5s;
         }
     }
 }
@@ -92,6 +92,6 @@ const imageLogoUrl = computed(() => {
 
     animation: loaded forwards;
     animation-duration: .5s;
-    animation-delay: .1s;
+    animation-delay: .5s;
 }
 </style>
