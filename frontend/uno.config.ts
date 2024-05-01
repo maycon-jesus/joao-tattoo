@@ -1,5 +1,6 @@
 // uno.config.ts
 import presetWind from '@unocss/preset-wind'
+import transformerVariantGroup from '@unocss/transformer-variant-group'
 import { defineConfig, presetAttributify } from 'unocss'
 
 export default defineConfig({
@@ -7,5 +8,8 @@ export default defineConfig({
     presets: [
         presetWind(),
         presetAttributify()
+    ],
+    transformers: [
+        transformerVariantGroup()
     ]
 })

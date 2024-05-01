@@ -23,6 +23,7 @@
     "@nuxt/image": "^1.6.0",
     "@unocss/nuxt": "^0.59.4",
     "@unocss/preset-wind": "^0.59.4",
+    "@unocss/transformer-variant-group": "^0.59.4",
     "sass": "^1.75.0",
     "sharp": "^0.33.3",
     "unocss": "^0.59.4"

@@ -14,36 +14,17 @@
             </div>
         </div>
         <div class="right">
-            <NuxtImg src="/home/slider1.jpg" class="img-slider" placeholder></NuxtImg>
+            <HomeIntroRight />
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
-import { loadingStore } from '~/store/loading';
-
-const img = useImage()
-const loading = loadingStore()
 const { socials } = useAppConfig()
 
 const budgetSocial = socials.find(s => s.tags?.includes('home-section-intro-budget'))
 const budgetSocialUrl = budgetSocial?.url || '/'
 
-const imagesToLoad = [
-    '/home/slider1.jpg'
-]
-
-onNuxtReady(() => {
-    for (const image of imagesToLoad) {
-        const imgLoad = new Image()
-        const imgUrl = img(image)
-        loading.startLoading(`img:a`)
-        imgLoad.src = imgUrl
-        imgLoad.onload = () => {
-            loading.endLoading(`img:a`)
-        }
-    }
-})
 </script>
 
 <style lang="scss" scoped>
@@ -78,19 +59,8 @@ onNuxtReady(() => {
     }
 }
 
-.add-content {
-
-    &::after,
-    &::before {
-        content: "";
-    }
-}
-
-.img-slider {
-    display: block;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center center;
+.right {
+    height: 100%;
+    position: relative;
 }
 </style>
