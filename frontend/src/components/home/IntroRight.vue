@@ -215,7 +215,7 @@ onMounted(() => {
             object-fit: cover;
             object-position: center center;
 
-            border-radius: 5px;
+            border-radius: 0px;
             box-sizing: border-box;
             filter: brightness(.8) saturate(1.1)
         }
