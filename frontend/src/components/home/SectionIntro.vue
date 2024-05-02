@@ -42,7 +42,8 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 <style lang="scss" scoped>
 .section-container {
     display: grid;
-    height: 100vh;
+    min-height: 100vh;
+    box-sizing: border-box;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -71,7 +72,6 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 }
 
 .right {
-    height: 100%;
     position: relative;
 }
 

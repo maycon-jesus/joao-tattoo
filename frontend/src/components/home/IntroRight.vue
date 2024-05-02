@@ -26,14 +26,14 @@
         </div>
 
         <!-- mobile -->
-        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2">
+        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2" v-if="props.mobile">
             <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[0]"
                 :key="`l2-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
                 </NuxtImg>
             </div>
         </div>
-        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2">
+        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2" v-if="props.mobile">
             <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[1]"
                 :key="`l2-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
@@ -77,7 +77,14 @@ const imagesToLoad = [
     '/home/slider18.jpg',
     '/home/slider19.jpg',
 ]
-const totalImages = imagesToLoad.length
+
+function getRandomImage(imageExists: string[]) {
+    const image = imagesToLoad[Math.floor(imagesToLoad.length * Math.random())]
+    const imagesDoNotRepeat = imageExists.slice(-10)
+    console.log(imagesDoNotRepeat, imagesDoNotRepeat.includes(image))
+    if (imagesDoNotRepeat.includes(image)) return getRandomImage(imageExists)
+    return image
+}
 
 const imageScrollHeight = computed(() => {
     return `${containerHeight.value / 4}px`
@@ -135,7 +142,7 @@ onMounted(() => {
                 }
             }
 
-            line.push(imagesToLoad[Math.floor(Math.random() * imagesToLoad.length)])
+            line.push(getRandomImage(line))
         }
     }
 })
@@ -144,11 +151,11 @@ onMounted(() => {
 <style lang="scss" scoped>
 @keyframes teste {
     0% {
-        transform: translateX(0);
+        transform: translateX(calc((v-bind(imageScrollHeight) * 1.3 * -1)/2));
     }
 
     100% {
-        transform: translateX(calc(25 * v-bind(imageScrollHeight) * -1));
+        transform: translateX(calc(14 * v-bind(imageScrollHeight) * 1.3 * -1));
     }
 }
 
@@ -158,7 +165,7 @@ onMounted(() => {
     }
 
     100% {
-        transform: translateX(calc(14 * v-bind(imageScrollHeight) * -1));
+        transform: translateX(calc(14 * v-bind(imageScrollHeight) * 1.3 * -1));
     }
 }
 
@@ -183,7 +190,8 @@ onMounted(() => {
     }
 
     .grid-cols {
-        grid-template-columns: repeat(100, v-bind(imageScrollHeight));
+        grid-auto-flow: column;
+        grid-auto-columns: auto;
 
         & {
             animation: teste 120s linear 0s infinite alternate forwards;
@@ -202,13 +210,12 @@ onMounted(() => {
         .img-slider {
             height: 100%;
             display: inline-block;
-            aspect-ratio: 1/1;
+            aspect-ratio: 13/10;
 
             object-fit: cover;
             object-position: center center;
 
-            border-radius: 10px;
-            border: 1px solid var(--theme-primary);
+            border-radius: 5px;
             box-sizing: border-box;
             filter: brightness(.8) saturate(1.1)
         }
