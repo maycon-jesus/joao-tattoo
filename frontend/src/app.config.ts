@@ -1,7 +1,10 @@
+import { config } from "~~/config/config";
 import { headerConfig } from "~~/config/header";
 
 export default defineAppConfig({
     header: headerConfig,
+
+    ...config,
 
     themes: {
         default: {

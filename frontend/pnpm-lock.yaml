@@ -23,6 +23,9 @@ importers:
       nuxt-icon:
         specifier: ^0.6.10
         version: 0.6.10(nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@20.12.7)(@unocss/reset@0.59.4)(encoding@0.1.13)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.4))(vue@3.4.25))(ioredis@5.4.1)(rollup@4.16.4)(sass@1.75.0)(terser@5.30.4)(unocss@0.59.4(@unocss/webpack@0.59.4(rollup@4.16.4)(webpack@5.91.0))(postcss@8.4.38)(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4))(vue@3.4.25)
+      nuxt-icons:
+        specifier: ^3.2.1
+        version: 3.2.1(rollup@4.16.4)
       nuxt-viewport:
         specifier: ^2.1.4
         version: 2.1.4(rollup@4.16.4)(vue@3.4.25)
@@ -2812,6 +2815,9 @@ packages:
 
   nuxt-icon@0.6.10:
     resolution: {integrity: sha512-S9zHVA66ox4ZSpMWvCjqKZC4ZogC0s2z3vZs+M4D95YXGPEXwxDZu+insMKvkbe8+k7gvEmtTk0eq3KusKlxiw==}
+
+  nuxt-icons@3.2.1:
+    resolution: {integrity: sha512-trvAFq9oWYwWEQ0qZDHVxvLK+TwOdFnoXYOXQvN1CRUlp1DBJdxC8vXO3mED2Kb+Suag+bpWLC6eXGrRwhfffQ==}
 
   nuxt-viewport@2.1.4:
     resolution: {integrity: sha512-WO7ZyCnvBKJCbAri4fN+tIBzFFMfHwK2iSN4JX5rgFg2Btr1KMbMv+sfWQJEEiMngQ4EBohaIbQ2ByaQY4pkbg==}
@@ -7334,6 +7340,13 @@ snapshots:
       - supports-color
       - vite
       - vue
+
+  nuxt-icons@3.2.1(rollup@4.16.4):
+    dependencies:
+      '@nuxt/kit': 3.11.2(rollup@4.16.4)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
 
   nuxt-viewport@2.1.4(rollup@4.16.4)(vue@3.4.25):
     dependencies:

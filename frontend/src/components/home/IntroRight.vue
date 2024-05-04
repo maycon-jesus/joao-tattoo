@@ -90,6 +90,7 @@ const imageScrollHeight = computed(() => {
     return `${containerHeight.value / 4}px`
 })
 
+let intervalResize: NodeJS.Timeout | undefined = undefined
 function onResize() {
     containerHeight.value = container.value?.getBoundingClientRect().height || 0
 }
@@ -106,12 +107,15 @@ onNuxtReady(() => {
     // }
 
     containerHeight.value = container.value?.getBoundingClientRect().height || 0
-
+    intervalResize = setInterval(() => {
+        onResize()
+    }, 1000)
     window.addEventListener('resize', onResize)
 })
 
 onBeforeUnmount(() => {
     window.removeEventListener('resize', onResize)
+    clearInterval(intervalResize)
 })
 
 const imagesToShow = useState<string[][]>(() => [
@@ -124,6 +128,7 @@ const imagesToShow = useState<string[][]>(() => [
 onMounted(() => {
     for (let lineIndex = 0; lineIndex < imagesToShow.value.length; lineIndex++) {
         const line = imagesToShow.value[lineIndex]
+        if (line.length > 0) continue;
         let count = -1
 
         for (let i = 0; i < 25; i++) {
@@ -200,7 +205,6 @@ onMounted(() => {
         &:nth-child(2) {
             animation: testeMeio 120s linear 0s infinite alternate forwards;
         }
-
     }
 
     .image-wrapper {

@@ -1,6 +1,7 @@
 <template>
     <div>
         <HomeSectionIntro />
+        <HomeSectionServices />
         <div>a</div>
         <div>a</div>
         <div>a</div>
