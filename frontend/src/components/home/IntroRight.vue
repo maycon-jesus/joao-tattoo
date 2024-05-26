@@ -81,7 +81,6 @@ const imagesToLoad = [
 function getRandomImage(imageExists: string[]) {
     const image = imagesToLoad[Math.floor(imagesToLoad.length * Math.random())]
     const imagesDoNotRepeat = imageExists.slice(-10)
-    console.log(imagesDoNotRepeat, imagesDoNotRepeat.includes(image))
     if (imagesDoNotRepeat.includes(image)) return getRandomImage(imageExists)
     return image
 }

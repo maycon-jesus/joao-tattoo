@@ -3,7 +3,7 @@
         'py-20': viewport.isDesktop,
         'py-15': viewport.isTablet,
         'py-10': viewport.isMobile,
-    }" class="px-10">
+    }" class="px-10 container mx-auto box-border">
         <h2 un-text="center" uppercase class="font-extrabold font-raleway mb-10" :class="{
             'text-5xl': viewport.isDesktop || viewport.isTablet,
             'text-4xl': viewport.isMobile,
