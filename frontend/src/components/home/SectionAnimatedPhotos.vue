@@ -10,12 +10,7 @@
         </div>
         <div class="row">
             <div class="scroller flex flex-row flex-nowrap gap-4" ref="scroller2">
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
-                <NuxtImg class="image" src="/home/slider1.jpg"></NuxtImg>
+              <NuxtImg class="image" :src="image" v-for="image of componentConfig.linha2" :key="image"></NuxtImg>
             </div>
         </div>
     </div>
