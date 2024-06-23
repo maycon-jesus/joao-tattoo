@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "dev-docker-up": "docker-compose -f docker/dev.docker-compose.yml up -d",
+    "dev-docker-down": "docker-compose -f docker/dev.docker-compose.yml down"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",

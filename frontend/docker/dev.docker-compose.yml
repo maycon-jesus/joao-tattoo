@@ -1,0 +1,12 @@
+name: "joao-tattoo-frontend"
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: docker/dev.dockerfile
+      no_cache: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ../src:/usr/app/src
