@@ -1,7 +1,9 @@
+import { secaoFotosScroll } from "~~/config/pages/home/secaoFotosScroll";
 import { secaoServicos } from "./secaoServicos";
-import {secaoFotosScroll} from "~~/config/pages/home/secaoFotosScroll";
+import { secaoSobreMim } from "./secaoSobreMim";
 
 export const home = {
     secaoServicos,
-    secaoFotosScroll
+    secaoFotosScroll,
+    secaoSobreMim
 }

@@ -3,7 +3,9 @@
     <HomeSectionIntro />
     <HomeSectionServices />
     <SectionAnimatedPhotos />
-    <div>a</div>
+    <HomeSectionAboutMe />
+    <HomeSectionMovingHeaders />
+    <div>alou</div>
     <div>a</div>
     <div>a</div>
     <div>a</div>

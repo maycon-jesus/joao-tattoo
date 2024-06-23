@@ -1,7 +1,7 @@
 import { config } from "~~/config/config";
 import { headerConfig } from "~~/config/header";
 
-export default defineAppConfig({
+export default defineAppConfig<any>({
     header: headerConfig,
 
     ...config,
@@ -11,6 +11,7 @@ export default defineAppConfig({
             background: '#0F0F0F',
             menuBackground: '#191919',
             'background-text': '#FCFAFA',
+            'background2-text': 'rgba(255, 255, 255, 0.6509803922)',
             primary: '#EEC759'
         }
     },

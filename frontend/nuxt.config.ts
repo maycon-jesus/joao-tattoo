@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     densities: [1, 2, 3],
 
     imagekit: {
-      baseURL: 'https://ik.imagekit.io/vdk8w7x8i'
+      baseURL: 'https://ik.imagekit.io/vdk8w7x8i/joaotattoo'
     }
   },
 
