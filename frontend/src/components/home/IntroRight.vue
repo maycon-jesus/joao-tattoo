@@ -4,7 +4,7 @@
         <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal"
             v-if="!props.mobile">
             <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[2]" :key="`l1-${index}`">
-                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }" height="500">
                 </NuxtImg>
             </div>
         </div>
@@ -13,14 +13,14 @@
                 'row-span-2': index % 5 == 0,
                 'col-span-2': index % 5 == 0
             }" v-for="(image, index) of imagesToShow[1]" :key="`l2-${index}`">
-                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }" height="500">
                 </NuxtImg>
             </div>
         </div>
         <div class="grid grid-cols grid-rows-1 gap grid-flow-row w-full box-border line-height-normal"
             v-if="!props.mobile">
             <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[3]" :key="`l3-${index}`">
-                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }" height="500">
                 </NuxtImg>
             </div>
         </div>
@@ -29,14 +29,14 @@
         <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2" v-if="props.mobile">
             <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[0]"
                 :key="`l2-${index}`">
-                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }" height="500">
                 </NuxtImg>
             </div>
         </div>
         <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-2" v-if="props.mobile">
             <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[1]"
                 :key="`l2-${index}`">
-                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }">
+                <NuxtImg :src="image" class="img-slider" placeholder :style="{ 'grid-column': 'span 2' }" height="500">
                 </NuxtImg>
             </div>
         </div>
