@@ -67,6 +67,7 @@ onBeforeUnmount(() => {
   width: 25vw;
   aspect-ratio: 510/340;
   object-fit: cover;
+  filter: brightness(103%) contrast(114%) grayscale(0%) hue-rotate(0deg) invert(0%) opacity(100%) saturate(122%) sepia(0%);
 }
 
 .tablet .image {

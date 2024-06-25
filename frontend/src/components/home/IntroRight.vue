@@ -220,7 +220,8 @@ onMounted(() => {
 
             border-radius: 0px;
             box-sizing: border-box;
-            filter: brightness(.8) saturate(1.1)
+            // filter: brightness(.8) saturate(1.1);
+            filter: brightness(103%) contrast(114%) grayscale(0%) hue-rotate(0deg) invert(0%) opacity(100%) saturate(122%) sepia(0%);
         }
     }
 }

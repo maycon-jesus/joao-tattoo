@@ -1,14 +1,14 @@
 .after-header{
     position: relative;
-    top: 80px;
+    padding-top: 80px;
     --header-height: 80px;
 }
 
 .mobile .after-header{
-    top: 65px;
+    padding-top: 65px;
     --header-height: 65px;
 }
 
 .page-main{
-    min-height: calc(100vh) ;
+    min-height: 100vh;
 }
