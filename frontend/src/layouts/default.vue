@@ -1,5 +1,9 @@
 <template>
-    <div>
+    <div :class="{
+        desktop: viewport.isDesktop,
+        tablet: viewport.isTablet,
+        mobile: viewport.isMobile
+    }">
         <TemplatesHeader></TemplatesHeader>
         <main>
             <slot></slot>
@@ -9,9 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { loadingStore } from '~/store/loading';
+import { viewportStore } from '~/store/viewport';
 
-const loading = loadingStore()
+const viewport = viewportStore()
+
 useHead({
     title: 'João Tattoo',
     meta: [
