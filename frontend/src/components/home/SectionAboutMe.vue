@@ -49,17 +49,17 @@ const viewport = viewportStore()
 <style lang="scss" scoped>
 section {
     --image-height: 350px;
-    --image-space: calc(var(--image-height) * 0.45);
-
+    --image-space: calc(var(--image-height) * 0.50);
+    --image-div-height: calc(var(--image-height) * 2 - var(--image-space));
     display: grid;
-    grid-template-columns: 1fr calc(var(--image-height) * 2 - var(--image-space));
+    grid-template-columns: 1fr var(--image-div-height);
     gap: 50px;
 
     &.mobile,
     &.tablet {
         --image-height: 250px;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr calc(var(--image-height) * 2 - var(--image-space));
+        grid-template-rows: 1fr var(--image-div-height);
     }
 }
 
@@ -83,18 +83,15 @@ section {
 
 .images-wrapper {
     position: relative;
-    height: 100%;
-    min-height: calc(350px + 125px);
-    width: 100%;
-    max-width: 550px;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
+    height: var(--image-div-height);
+    width: var(--image-div-height);
 
     .image {
         height: var(--image-height);
-        width: 65%;
-        max-width: 400px;
+        aspect-ratio: 1/1;
         position: absolute;
         object-fit: cover;
         object-position: center center;
