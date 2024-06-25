@@ -42,6 +42,7 @@ const props = defineProps<{
     object-fit: cover;
     object-position: center center;
     transition: all 0.3s ease-in-out;
+    filter: brightness(103%) contrast(114%) grayscale(0%) hue-rotate(0deg) invert(0%) opacity(100%) saturate(122%) sepia(0%);
 }
 
 .on-hover {

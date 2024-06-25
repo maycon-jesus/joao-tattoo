@@ -2,7 +2,7 @@
     <div class="w-full overflow-hidden" :class="{
         'text-9xl': viewport.isDesktop,
         'text-6xl': viewport.isTablet,
-        'text-4xl': viewport.isMobile
+        'text-5xl': viewport.isMobile
     }">
         <div class="container-move-text font-black">
             <h1 class="heading-move">PIERCING - DESIGN DE TATUAGEM - COBERTURA - TATUAGEM</h1>
