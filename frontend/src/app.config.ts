@@ -19,48 +19,79 @@ export default defineAppConfig<any>({
     socials: [
         {
             text: 'contato@joaotattoo.ink',
+            socialName: 'Email',
             icon: 'mage:email',
             url: 'mailto:contato@joaotattoo.ink',
             visibility: {
                 footerText: false,
-                footerIcon: true
+                footerIcon: true,
+                contactPage: true,
+            },
+            colors: {
+                btnGradient: 'linear-gradient(to right, #485563, #29323c)',
+                btnText: '#ffffff'
+            },
+            order: {
+                contactPage: 3
             }
         },
         {
             text: '(31) 97528-9908',
+            socialName: 'Whatsapp',
             icon: 'ph:whatsapp-logo-light',
             url: 'https://api.whatsapp.com/send?phone=5531975289908',
             tags: ['home-section-intro-budget'],
             visibility: {
                 footerText: true,
-                footerIcon: false
+                footerIcon: false,
+                contactPage: true,
+            },
+            colors: {
+                btnGradient: 'linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%)',
+                btnText: '#242424'
+            },
+            order: {
+                contactPage: 1
             }
         },
         {
             text: '@joaov_tattoo',
+            socialName: 'Instagram',
             icon: 'ph:instagram-logo-light',
             url: 'https://www.instagram.com/joaov_tattoo',
             visibility: {
                 footerText: true,
-                footerIcon: false
+                footerIcon: false,
+                contactPage: true,
+            },
+            colors: {
+                btnGradient: 'linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)',
+                btnText: '#ffffff'
+            },
+            order: {
+                contactPage: 2
             }
         },
         {
             text: 'Playlist',
+            socialName: 'Spotify',
             icon: 'ph:spotify-logo-light',
             url: 'https://open.spotify.com/playlist/79j0UiNNV8fxM89BKHmsmT?si=6ba0e5fe575a4143&nd=1&dlsi=3d74370f4fc14338',
             visibility: {
                 footerText: false,
-                footerIcon: true
+                footerIcon: true,
+                contactPage: false,
             }
         },
         {
             text: 'Behance',
+            socialName: 'Behance',
             icon: 'ph:behance-logo-light',
             url: 'https://behance.net',
             visibility: {
                 footerText: false,
-                footerIcon: true
+                footerIcon: true,
+                contactPage: false
             }
         }
     ],

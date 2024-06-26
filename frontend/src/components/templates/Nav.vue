@@ -6,8 +6,11 @@
         desktop: isDesktop
     }">
         <div class="menu">
-            <div class="menu-link-mask" v-for="link of links" :key="link.text"><a href="/" class="menu-link"
-                    :ref="(el: any) => setMenuLinkRef(link)(el)">{{ link.text }}</a></div>
+            <div class="menu-link-mask" v-for="link of links" :key="link.text">
+                <NuxtLink :to="link.to" class="menu-link" @click="emit('update:open', false)"
+                    :ref="(el: any) => setMenuLinkRef(link)(el)">{{
+                        link.text }}</NuxtLink>
+            </div>
         </div>
         <div class="nav-footer" ref="navFooter">
             <a href="mailto:contato@joaotattoo.ink">contato@joaotattoo.ink</a>
@@ -58,21 +61,34 @@ watch(currentBreakpoint, (newValue, oldValue) => {
 type link = {
     ref?: HTMLElement,
     text: string,
+    to: any
     motion?: any
 }
 
 const links = ref<link[]>([
     {
-        text: 'Sobre mim'
+        text: 'Sobre mim',
+        to: {
+            name: 'index'
+        }
     },
     {
-        text: 'Serviços'
+        text: 'Serviços',
+        to: {
+            name: 'index'
+        }
     },
     {
-        text: 'Portfólio'
+        text: 'Portfólio',
+        to: {
+            name: 'index'
+        }
     },
     {
-        text: 'Contato'
+        text: 'Contato',
+        to: {
+            name: 'contato'
+        }
     }
 ])
 

@@ -5,7 +5,7 @@
         'py-15': viewport.isMobile,
         'px-40': viewport.isDesktop,
         'px-25': viewport.isTablet,
-        'px-15': viewport.isMobile,
+        'px-10': viewport.isMobile,
         desktop: viewport.isDesktop,
         tablet: viewport.isTablet,
         mobile: viewport.isMobile
@@ -48,18 +48,22 @@ const viewport = viewportStore()
 
 <style lang="scss" scoped>
 section {
+    --image-height: 350px;
+    --image-space: calc(var(--image-height) * 0.50);
+    --image-div-height: calc(var(--image-height) * 2 - var(--image-space));
     display: grid;
-    grid-template-columns: 1fr calc(350px + 125px);
+    grid-template-columns: 1fr var(--image-div-height);
     gap: 50px;
 
-    &.mobile {
+    &.mobile,
+    &.tablet {
+        --image-height: 250px;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr calc(350px + 125px);
+        grid-template-rows: 1fr var(--image-div-height);
     }
 
-    &.tablet {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr calc(350px + 125px);
+    &.mobile {
+        --image-height: 200px;
     }
 }
 
@@ -83,18 +87,15 @@ section {
 
 .images-wrapper {
     position: relative;
-    height: 100%;
-    min-height: calc(350px + 125px);
-    width: 100%;
-    max-width: 550px;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
+    height: var(--image-div-height);
+    width: var(--image-div-height);
 
     .image {
-        height: 350px;
-        width: 75%;
-        max-width: 400px;
+        height: var(--image-height);
+        aspect-ratio: 1/1;
         position: absolute;
         object-fit: cover;
         object-position: center center;
@@ -105,11 +106,10 @@ section {
         }
 
         &.image-bottom {
-            top: 125px;
-            left: 125px;
+            top: var(--image-space);
+            left: var(--image-space);
             z-index: 1;
         }
     }
-
 }
 </style>

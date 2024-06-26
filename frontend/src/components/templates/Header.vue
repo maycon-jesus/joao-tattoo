@@ -5,11 +5,14 @@
         desktop: isDesktop,
         fixed: navOpen
     }">
-        <NuxtImg class="logo" v-if="isMobile" :src="headerConfig.logo.mobile.url"
-            :height="headerConfig.logo.mobile.height" :width="headerConfig.logo.mobile.width" preload
-            @load="loading.endLoading('image:header:logo')"></NuxtImg>
-        <NuxtImg class="logo" v-else :src="headerConfig.logo.desktop.url" :height="headerConfig.logo.desktop.height"
-            :width="headerConfig.logo.desktop.width" preload @load="loading.endLoading('image:header:logo')"></NuxtImg>
+        <NuxtLink :to="{ name: 'index' }">
+            <NuxtImg class="logo" v-if="isMobile" :src="headerConfig.logo.mobile.url"
+                :height="headerConfig.logo.mobile.height" :width="headerConfig.logo.mobile.width" preload
+                @load="loading.endLoading('image:header:logo')"></NuxtImg>
+            <NuxtImg class="logo" v-else :src="headerConfig.logo.desktop.url" :height="headerConfig.logo.desktop.height"
+                :width="headerConfig.logo.desktop.width" preload @load="loading.endLoading('image:header:logo')">
+            </NuxtImg>
+        </NuxtLink>
 
         <div class="spacer" aria-hidden="true"></div>
         <button class="menu-btn" @click="toggleMenu">
