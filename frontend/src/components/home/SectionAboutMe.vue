@@ -5,7 +5,7 @@
         'py-15': viewport.isMobile,
         'px-40': viewport.isDesktop,
         'px-25': viewport.isTablet,
-        'px-15': viewport.isMobile,
+        'px-10': viewport.isMobile,
         desktop: viewport.isDesktop,
         tablet: viewport.isTablet,
         mobile: viewport.isMobile
@@ -60,6 +60,10 @@ section {
         --image-height: 250px;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr var(--image-div-height);
+    }
+
+    &.mobile {
+        --image-height: 200px;
     }
 }
 
