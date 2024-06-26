@@ -3,8 +3,8 @@
         desktop: viewport.isDesktop,
         tablet: viewport.isTablet,
         mobile: viewport.isMobile,
-        'pt-20': viewport.isDesktop || viewport.isTablet,
-        'pt-15': viewport.isMobile
+        // 'pt-20': viewport.isDesktop || viewport.isTablet,
+        // 'pt-15': viewport.isMobile
     }">
         <HomeInstagramCard src="/instagram/1.png" alt="Tatuagem"
             href="https://www.instagram.com/p/C8e6aXNxEQ6/?img_index=1" />

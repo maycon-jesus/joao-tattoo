@@ -4,7 +4,7 @@
     <HomeSectionServices />
     <SectionAnimatedPhotos />
     <HomeSectionAboutMe />
-    <HomeSectionMovingHeaders />
+    <!-- <HomeSectionMovingHeaders /> -->
     <HomeSectionInstagram />
   </div>
 </template>
