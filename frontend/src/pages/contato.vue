@@ -8,7 +8,7 @@
                     Suspendisse varius enim in eros elementum
                     tristique. Duis cursus, mi quis viverra ornare.</p>
                 <div class="pt-10">
-                    <NuxtImg src="/contact/contact.png" width="1060" class="image"></NuxtImg>
+                    <NuxtImg src="/contact/contact.jpeg" width="1060" class="image"></NuxtImg>
                 </div>
             </div>
             <div>
@@ -49,10 +49,12 @@ const socials = config.socials
     aspect-ratio: 16/10;
     object-fit: cover;
     width: 150%;
+    filter: saturate(0) brightness(.5);
 }
 
 .socials-box {
     border: 1px solid white;
     background-color: var(--theme-background);
+    position: relative;
 }
 </style>
