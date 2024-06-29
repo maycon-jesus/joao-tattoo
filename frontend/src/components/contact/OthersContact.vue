@@ -3,7 +3,7 @@
         'py-20': !showMobileView,
         'py-10': showMobileView,
     }" class="px-10 container mx-auto box-border">
-        <div v-if="!viewport.isMobile">
+        <div v-if="!showMobileView">
             <div class="grid grid-flow-row gap-5 overflow-hidden pb-5" :class="{
                 'grid-cols-4': viewport.isDesktop,
                 'grid-cols-2': viewport.isTablet,
@@ -17,8 +17,9 @@
         <div v-else>
             <div class="grid grid-flow-row gap-5 overflow-hidden pb-5 grid-cols-1">
                 <ContactCard v-for=" (card, index) of socialsSquare" :key="index" :title="card.socialName"
-                    :description="card.text" :href="card.url" class="p-5 position-relative" v-motion
-                    :initial="animationCardInit" :visible-once="animationCardVisibleOnce(100)" />
+                    :description="card.text" :href="card.url" class="p-5 position-relative"
+                    :style="{ 'aspect-ratio': '4/2' }" v-motion :initial="animationCardInit"
+                    :visible-once="animationCardVisibleOnce(100)" />
             </div>
         </div>
     </section>
