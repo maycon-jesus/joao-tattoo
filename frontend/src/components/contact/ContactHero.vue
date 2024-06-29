@@ -55,6 +55,7 @@ const showMobileView = computed(() => viewport.isMobile || viewport.isSmallTable
 
     &.mobile {
         --image-width: 100%;
+        min-height: unset
     }
 }
 
