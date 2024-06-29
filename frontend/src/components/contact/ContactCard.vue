@@ -1,11 +1,16 @@
 <template>
     <a class="card text-center" target="_blank" :href="$props.href">
         <h3 class="font-extrabold uppercase text-xl">{{ $props.title }}</h3>
-        <p class="text mt-4">{{ $props.description }}</p>
+        <p class="mt-4" :class="{
+            'text-xs': viewport.isMobile,
+            'text-base': !viewport.isMobile
+        }">{{ $props.description }}</p>
     </a>
 </template>
 
 <script lang="ts" setup>
+import { viewportStore } from '~/store/viewport';
+
 const props = defineProps({
     title: {
         type: String,
@@ -13,13 +18,14 @@ const props = defineProps({
     },
     description: {
         type: String,
-        default: "Alo aaaaaaaaa"
+        required: true
     },
     href: {
         type: String,
         required: true
     }
 })
+const viewport = viewportStore()
 </script>
 
 <style lang="scss" scoped>
