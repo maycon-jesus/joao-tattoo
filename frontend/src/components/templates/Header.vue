@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { Icon } from "#components"
 import { loadingStore } from "~/store/loading";
-const { header: headerConfig } = useAppConfig()
+import headerConfig from "~/config/components/header"
 
 const { breakpoint: currentBreakpoint, matches } = useViewport()
 const loading = loadingStore()

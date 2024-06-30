@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     quality: 80,
     format: ['webp'],
     provider: "imagekit",
-    densities: [1, 2, 3],
+    densities: [1, 2],
 
     imagekit: {
       baseURL: 'https://ik.imagekit.io/vdk8w7x8i/joaotattoo'

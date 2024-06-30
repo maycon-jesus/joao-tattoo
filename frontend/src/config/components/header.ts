@@ -1,4 +1,4 @@
-export const headerConfig = {
+export default {
     "logo": {
         "mobile": {
             "url": "/logos/header-logo.png",
