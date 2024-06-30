@@ -32,8 +32,8 @@
             tablet: viewport.isTablet,
             mobile: viewport.isMobile
         }" class="flex no-wrap images-wrapper">
-            <NuxtImg class="image image-top" :src="config.imagemTopo" />
-            <NuxtImg class="image image-bottom" :src="config.imagemAtras" />
+            <NuxtImg class="image image-top" :src="componentConfig.imagemTop" />
+            <NuxtImg class="image image-bottom" :src="componentConfig.imagemBottom" />
         </div>
 
     </section>
@@ -41,8 +41,9 @@
 
 <script setup lang="ts">
 import { viewportStore } from '~/store/viewport';
+import config from '~/config/pages/home'
 const configGlobal = useAppConfig()
-const config = configGlobal.pages.home.secaoSobreMim
+const componentConfig = config.aboutMe
 const viewport = viewportStore()
 </script>
 
