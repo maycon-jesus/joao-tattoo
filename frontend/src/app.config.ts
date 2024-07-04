@@ -1,10 +1,8 @@
-import { config } from "~~/config/config";
-import { headerConfig } from "~~/config/header";
-
 export default defineAppConfig<any>({
-    header: headerConfig,
-
-    ...config,
+    umami: {
+        host: 'https://dev-analytics.mayconjesus.dev',
+        id: '33d87fd7-4bdb-4ac6-8612-400920876185'
+    },
 
     themes: {
         default: {
@@ -18,6 +16,18 @@ export default defineAppConfig<any>({
 
     socials: [
         {
+            text: 'Conselheiro Lafaiete - MG',
+            socialName: 'Endereço',
+            icon: 'map-marker-alt',
+            url: 'https://maps.app.goo.gl/32fgb1o2kokmC57h6',
+            visibility: {
+                contactPageSquare: true
+            },
+            order: {
+                contactPageSquare: 1
+            }
+        },
+        {
             text: 'contato@joaotattoo.ink',
             socialName: 'Email',
             icon: 'mage:email',
@@ -26,13 +36,15 @@ export default defineAppConfig<any>({
                 footerText: false,
                 footerIcon: true,
                 contactPage: true,
+                contactPageSquare: true
             },
             colors: {
                 btnGradient: 'linear-gradient(to right, #485563, #29323c)',
                 btnText: '#ffffff'
             },
             order: {
-                contactPage: 3
+                contactPage: 3,
+                contactPageSquare: 4
             }
         },
         {
@@ -45,13 +57,15 @@ export default defineAppConfig<any>({
                 footerText: true,
                 footerIcon: false,
                 contactPage: true,
+                contactPageSquare: true
             },
             colors: {
                 btnGradient: 'linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%)',
                 btnText: '#242424'
             },
             order: {
-                contactPage: 1
+                contactPage: 1,
+                contactPageSquare: 2
             }
         },
         {
@@ -63,13 +77,15 @@ export default defineAppConfig<any>({
                 footerText: true,
                 footerIcon: false,
                 contactPage: true,
+                contactPageSquare: true
             },
             colors: {
                 btnGradient: 'linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)',
                 btnText: '#ffffff'
             },
             order: {
-                contactPage: 2
+                contactPage: 2,
+                contactPageSquare: 3
             }
         },
         {

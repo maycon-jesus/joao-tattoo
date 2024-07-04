@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '~/assets/css/global/normalize.css',
   ],
 
+  extends: ['nuxt-umami'],
   modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport", /*"nuxt-delay-hydration",*/ "@unocss/nuxt", "nuxt-icons", "@vueuse/motion/nuxt"],
 
   image: {
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
     quality: 80,
     format: ['webp'],
     provider: "imagekit",
-    densities: [1, 2, 3],
+    densities: [1, 2],
 
     imagekit: {
       baseURL: 'https://ik.imagekit.io/vdk8w7x8i/joaotattoo'
