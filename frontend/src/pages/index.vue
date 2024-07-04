@@ -11,5 +11,4 @@
 
 <script setup lang="ts">
 import SectionAnimatedPhotos from "~/components/home/SectionAnimatedPhotos.vue";
-umTrackEvent('evento-teste', { propsTeste: true })
 </script>
