@@ -13,22 +13,23 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
-    "@vueuse/motion": "^2.1.0",
-    "nuxt": "^3.11.2",
+    "@vueuse/motion": "^2.2.3",
+    "nuxt": "^3.12.2",
     "nuxt-delay-hydration": "^1.3.3",
     "nuxt-icon": "^0.6.10",
     "nuxt-icons": "^3.2.1",
-    "nuxt-viewport": "^2.1.4",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "nuxt-umami": "^2.6.2",
+    "nuxt-viewport": "^2.1.5",
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@nuxt/image": "^1.6.0",
+    "@nuxt/image": "^1.7.0",
     "@unocss/nuxt": "^0.59.4",
     "@unocss/preset-wind": "^0.59.4",
     "@unocss/transformer-variant-group": "^0.59.4",
-    "sass": "^1.75.0",
-    "sharp": "^0.33.3",
+    "sass": "^1.77.6",
+    "sharp": "^0.33.4",
     "unocss": "^0.59.4"
   }
 }

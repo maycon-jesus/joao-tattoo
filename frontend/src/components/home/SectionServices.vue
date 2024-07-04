@@ -8,14 +8,14 @@
             'text-5xl': viewport.isDesktop || viewport.isTablet,
             'text-4xl': viewport.isMobile,
         }" v-motion :initial="animationCardInit"
-            :visible-once="animationCardVisibleOnce(0, secaoServicos.cards.length / 2 * 200)">Meus <span
+            :visible-once="animationCardVisibleOnce(0, services.length / 2 * 200)">Meus <span
                 class="primary--text">serviços</span></h2>
         <div v-if="!viewport.isMobile">
             <div class="grid grid-flow-row gap-5 overflow-hidden pb-5" :class="{
                 'grid-cols-4': viewport.isDesktop,
                 'grid-cols-2': viewport.isTablet,
             }">
-                <HomeServicesServiceCard v-for=" (card, index) of secaoServicos.cards" :key="index" v-bind="card"
+                <HomeServicesServiceCard v-for=" (card, index) of services" :key="index" v-bind="card"
                     class="p-5 position-relative" :class="{
                         'top-5': (index + 1) % 2 == 0,
                     }" v-motion :initial="animationCardInit" :visible-once="animationCardVisibleOnce(index * 200)" />
@@ -23,7 +23,7 @@
         </div>
         <div v-else>
             <div class="grid grid-flow-row gap-5 overflow-hidden pb-5 grid-cols-1">
-                <HomeServicesServiceCard v-for=" (card, index) of secaoServicos.cards" :key="index" v-bind="card"
+                <HomeServicesServiceCard v-for=" (card, index) of services" :key="index" v-bind="card"
                     class="p-5 position-relative" v-motion :initial="animationCardInit"
                     :visible-once="animationCardVisibleOnce(100)" />
             </div>
@@ -33,7 +33,9 @@
 
 <script setup lang="ts">
 import { viewportStore } from '~/store/viewport';
-const { pages: { home: { secaoServicos } } } = useAppConfig()
+import config from '~/config/pages/home';
+const services = config.services
+
 const viewport = viewportStore()
 
 const animationCardInit = {

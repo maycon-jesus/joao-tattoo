@@ -5,7 +5,7 @@
   }">
     <div class="row">
       <div class="scroller flex flex-row flex-nowrap gap-4" ref="scroller1">
-        <NuxtImg class="image" :src="image" v-for="image of componentConfig.linha1" :key="image" width="600"></NuxtImg>
+        <NuxtImg class="image" :src="image" v-for="image of componentConfig" :key="image" width="600"></NuxtImg>
       </div>
     </div>
   </div>
@@ -13,11 +13,12 @@
 
 <script setup lang="ts">
 import { viewportStore } from "~/store/viewport";
+import config from '~/config/pages/home'
 
 const wrapper = ref<HTMLElement>()
 const scroller1 = ref<HTMLElement>()
 const appConfig = useAppConfig()
-const componentConfig = appConfig.pages.home.secaoFotosScroll
+const componentConfig = config.imagesScroll
 const viewport = viewportStore()
 
 function litenScroll() {
