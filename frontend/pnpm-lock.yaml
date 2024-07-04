@@ -26,6 +26,9 @@ importers:
       nuxt-icons:
         specifier: ^3.2.1
         version: 3.2.1(magicast@0.3.4)(rollup@4.18.0)
+      nuxt-umami:
+        specifier: ^2.6.2
+        version: 2.6.2
       nuxt-viewport:
         specifier: ^2.1.5
         version: 2.1.5(magicast@0.3.4)(rollup@4.18.0)(vue@3.4.31)
@@ -2979,6 +2982,9 @@ packages:
 
   nuxt-icons@3.2.1:
     resolution: {integrity: sha512-trvAFq9oWYwWEQ0qZDHVxvLK+TwOdFnoXYOXQvN1CRUlp1DBJdxC8vXO3mED2Kb+Suag+bpWLC6eXGrRwhfffQ==}
+
+  nuxt-umami@2.6.2:
+    resolution: {integrity: sha512-2EtGdp04jml4967Qgo1lv2jrMPnojuDnJD5aMaNAxbwG4EGTkpRjymNDokLEzDiJEEovkhxrY3pJAX/TO8f4/A==}
 
   nuxt-viewport@2.1.5:
     resolution: {integrity: sha512-nAOYveopKVPvzfDfMx23nbFzCD8jk+uEX2QY6o4ldLGfVeC5yULqkjY/8ZuRGMADB7bfH/9YZQs0C2aWsTaTcA==}
@@ -7628,6 +7634,8 @@ snapshots:
       - magicast
       - rollup
       - supports-color
+
+  nuxt-umami@2.6.2: {}
 
   nuxt-viewport@2.1.5(magicast@0.3.4)(rollup@4.18.0)(vue@3.4.31):
     dependencies:

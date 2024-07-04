@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '~/assets/css/global/normalize.css',
   ],
 
+  extends: ['nuxt-umami'],
   modules: ["@nuxt/image", "@pinia/nuxt", "nuxt-icon", "nuxt-viewport", /*"nuxt-delay-hydration",*/ "@unocss/nuxt", "nuxt-icons", "@vueuse/motion/nuxt"],
 
   image: {

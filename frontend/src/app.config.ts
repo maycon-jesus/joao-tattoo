@@ -1,4 +1,9 @@
 export default defineAppConfig<any>({
+    umami: {
+        host: 'https://dev-analytics.mayconjesus.dev',
+        id: '33d87fd7-4bdb-4ac6-8612-400920876185'
+    },
+
     themes: {
         default: {
             background: '#0F0F0F',
