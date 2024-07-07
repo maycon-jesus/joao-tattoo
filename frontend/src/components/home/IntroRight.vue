@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import config from "~/config/pages/home"
 const props = defineProps<{
     mobile: Boolean,
 }>()
@@ -51,32 +52,8 @@ const props = defineProps<{
 const container = ref<HTMLElement>()
 const containerHeight = ref(0)
 
-const imagesPerfil = [
-    '/home/perfil.jpg',
-    '/home/perfil2.jpg',
-]
-
-const imagesToLoad = [
-    '/home/slider1.jpg',
-    '/home/slider2.jpg',
-    '/home/slider3.jpg',
-    '/home/slider4.jpg',
-    '/home/slider5.jpg',
-    '/home/slider6.jpg',
-    '/home/slider7.jpg',
-    '/home/slider8.jpg',
-    '/home/slider9.jpg',
-    '/home/slider10.jpg',
-    '/home/slider11.jpg',
-    '/home/slider12.jpg',
-    '/home/slider13.jpg',
-    '/home/slider14.jpg',
-    '/home/slider15.jpg',
-    '/home/slider16.jpg',
-    '/home/slider17.jpg',
-    '/home/slider18.jpg',
-    '/home/slider19.jpg',
-]
+const imagesPerfil = config.introduction.profileImages
+const imagesToLoad = config.introduction.imagesTattoos
 
 function getRandomImage(imageExists: string[]) {
     const image = imagesToLoad[Math.floor(imagesToLoad.length * Math.random())]
@@ -95,16 +72,6 @@ function onResize() {
 }
 
 onNuxtReady(() => {
-    // for (const image of imagesToLoad) {
-    //     const imgLoad = new Image()
-    //     const imgUrl = img(image)
-    //     loading.startLoading(`img:${image}`)
-    //     imgLoad.src = imgUrl
-    //     imgLoad.onload = () => {
-    //         loading.endLoading(`img:${image}`)
-    //     }
-    // }
-
     containerHeight.value = container.value?.getBoundingClientRect().height || 0
     intervalResize = setInterval(() => {
         onResize()

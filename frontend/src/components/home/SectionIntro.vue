@@ -7,16 +7,12 @@
             'px-6': isMobile
         }">
             <div class="text-wrapper">
-                <h1 class="mb-6" un-text="4xl sm:5xl md:6xl"><span class="primary-text">Especialista</span> em Geek &
-                    BlackWork
-                </h1>
-                <p class="description" un-text="lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    varius enim in
-                    eros elementum
-                    tristique.</p>
+                <h1 class="mb-6" un-text="4xl sm:5xl md:6xl" v-html=titleHtml></h1>
+                <p class="description" un-text="lg">{{ config.introduction.descriptionText }}</p>
                 <div class="mt-6">
-                    <CustomButtonBlur :href="budgetSocialUrl" target="_blank">Solicitar orçamento</CustomButtonBlur>
-                    <CustomButtonBlur>Meus trabalhos</CustomButtonBlur>
+                    <CustomButtonBlur :href="budgetSocialUrl" target="_blank">
+                        {{ config.introduction.buttons.estimateText }}</CustomButtonBlur>
+                    <CustomButtonBlur>{{ config.introduction.buttons.worksText }}</CustomButtonBlur>
                 </div>
             </div>
         </div>
@@ -27,6 +23,9 @@
 </template>
 
 <script lang="ts" setup>
+import config from "~/config/pages/home"
+const titleHtml = config.introduction.titleText.replace(/%(.+)%/g, '<span class="primary-text">$1</span>')
+
 const { socials } = useAppConfig()
 const { breakpoint } = useViewport()
 
@@ -60,10 +59,6 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 
     .text-wrapper {
         max-width: 700px;
-    }
-
-    .primary-text {
-        color: var(--theme-primary);
     }
 
     .description {
