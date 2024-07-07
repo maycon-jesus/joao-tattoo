@@ -53,8 +53,9 @@ export default {
             customIcon: 'cover-up',
             title: 'Cobertura',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
+        },
     ],
+
     imagesScroll: [
         '/home/slider1.jpg',
         '/home/slider2.jpg',
@@ -63,7 +64,11 @@ export default {
         '/home/slider5.jpg',
         '/home/slider6.jpg'
     ],
+
     aboutMe: {
+        titleText: 'Quem está por trás destas %tatuagens incríveis%?',
+        descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
+        buttonAboutMeText: 'Sobre mim',
         imagemTop: '/aboutme/top.png',
         imagemBottom: '/aboutme/back.png',
     }

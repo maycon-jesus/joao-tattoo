@@ -15,16 +15,10 @@
                 'text-5xl': viewport.isDesktop,
                 'text-4xl': viewport.isTablet,
                 'text-3xl': viewport.isMobile
-            }">Quem está por trás destas <span class="primary--text">tatuagens
-                    incríveis</span>?
+            }" v-html="titleHtml">
             </h2>
-            <p class="text-lg background--text mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim
-                in eros elementum
-                tristique.
-                Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-            </p>
-            <CustomButtonBlur class="mt-8">Sobre mim</CustomButtonBlur>
+            <p class="text-lg background--text mt-3">{{ componentConfig.descriptionText }}</p>
+            <CustomButtonBlur class="mt-8">{{ componentConfig.buttonAboutMeText }}</CustomButtonBlur>
         </div>
 
         <div :class="{
@@ -42,9 +36,10 @@
 <script setup lang="ts">
 import { viewportStore } from '~/store/viewport';
 import config from '~/config/pages/home'
-const configGlobal = useAppConfig()
 const componentConfig = config.aboutMe
 const viewport = viewportStore()
+
+const titleHtml = componentConfig.titleText.replace(/%(.+)%/g, '<span class="primary-text">$1</span>')
 </script>
 
 <style lang="scss" scoped>
@@ -70,10 +65,6 @@ section {
 
 .font-raleway {
     font-family: "Raleway", sans-serif;
-}
-
-.primary--text {
-    color: var(--theme-primary);
 }
 
 .background--text {
