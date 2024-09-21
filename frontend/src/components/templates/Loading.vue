@@ -78,6 +78,10 @@ const imageLogoUrl = computed(() => {
 }
 
 .loading.loaded {
+    animation: loaded forwards;
+    animation-duration: .5s;
+    animation-delay: .5s;
+    
     @keyframes loaded {
         0% {
             transform: translateY(0);
@@ -89,9 +93,5 @@ const imageLogoUrl = computed(() => {
             border-bottom: 1vh solid var(--theme-primary);
         }
     }
-
-    animation: loaded forwards;
-    animation-duration: .5s;
-    animation-delay: .5s;
 }
 </style>
