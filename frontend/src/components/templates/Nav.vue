@@ -81,7 +81,7 @@ const links = ref<link[]>([
     {
         text: 'Portfólio',
         to: {
-            name: 'index'
+            name: 'portfolio'
         }
     },
     {
