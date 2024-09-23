@@ -1,16 +1,23 @@
 <template>
     <div class="overflow-hidden teste-anima" ref="container">
         <!-- desktop -->
-        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-normal"
+        <div class="grid grid-cols grid-rows-1 gap grid-flow-col w-full box-border line-height-normal normal"
             v-if="!props.mobile">
             <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[0]" :key="`l1-${index}`">
                 <NuxtImg :src="image" class="img-slider" placeholder height="500">
                 </NuxtImg>
             </div>
         </div>
+        <div class="grid grid-cols grid-rows-1 gap grid-flow-col w-full box-border line-height-normal reverse"
+            v-if="!props.mobile">
+            <div class="image-wrapper p-2" v-for="(image, index) of imagesToShow[1]" :key="`l1-${index}`">
+                <NuxtImg :src="image" class="img-slider" placeholder height="500">
+                </NuxtImg>
+            </div>
+        </div>
 
         <!-- mobile -->
-        <div class="grid grid-cols grid-rows-2 gap grid-flow-col w-full box-border line-height-normal mobile"
+        <div class="grid grid-cols grid-rows-1 gap grid-flow-col w-full box-border line-height-normal mobile"
             v-if="props.mobile">
             <div class="image-wrapper p-2 row-span-2 col-span-2" v-for="(image, index) of imagesToShow[0]"
                 :key="`l2-${index}`">
@@ -41,8 +48,7 @@ function getRandomImage(imageExists: string[]) {
 }
 
 const imageScrollHeight = computed(() => {
-    console.log(`${containerHeight.value}px`)
-    return `${containerHeight.value}px`
+    return `${containerHeight.value / 2}px`
 })
 
 let intervalResize: NodeJS.Timeout | undefined = undefined
@@ -65,6 +71,7 @@ onBeforeUnmount(() => {
 
 const imagesToShow = useState<string[][]>(() => [
     [], // has perfil a cada 6
+    [], // has perfil a cada 6
 ])
 
 onMounted(() => {
@@ -75,11 +82,9 @@ onMounted(() => {
 
         for (let i = 0; i < 50; i++) {
             count++
-            if (lineIndex === 0) {
-                if (count % 6 == 0) {
-                    line.push(imagesPerfil[Math.floor(Math.random() * imagesPerfil.length)])
-                    continue
-                }
+            if (count % 6 == 0) {
+                line.push(imagesPerfil[Math.floor(Math.random() * imagesPerfil.length)])
+                continue
             }
 
             line.push(getRandomImage(line))
@@ -89,19 +94,19 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@keyframes teste {
+@keyframes animacaoCols {
     0% {
-        transform: translateX(calc((v-bind(imageScrollHeight) * 0.83333 / 2 * -1)));
+        transform: translateX(calc((v-bind(imageScrollHeight) * 0.83333 * -1)));
     }
 
     100% {
-        transform: translateX(calc(23 * v-bind(imageScrollHeight) * 0.83333 / 2 * -1));
+        transform: translateX(calc(45 * v-bind(imageScrollHeight) * 0.83333 * -1));
     }
 }
 
-@keyframes animacaoColsMobile {
+@keyframes animacaoColsReverse {
     0% {
-        transform: translateX(calc((v-bind(imageScrollHeight) * 0.83333 * -1)));
+        transform: translateX(0);
     }
 
     100% {
@@ -129,12 +134,16 @@ onMounted(() => {
         grid-auto-flow: column;
         grid-auto-columns: auto;
 
-        & {
-            animation: teste 20s linear 0s infinite alternate forwards;
+        &.normal {
+            animation: animacaoCols 60s linear 0s infinite alternate forwards;
+        }
+
+        &.reverse {
+            animation: animacaoColsReverse 60s linear 0s infinite alternate-reverse forwards;
         }
 
         &.mobile {
-            animation: animacaoColsMobile 60s linear 0s infinite alternate forwards;
+            animation: animacaoCols 120s linear 0s infinite alternate forwards;
         }
     }
 
