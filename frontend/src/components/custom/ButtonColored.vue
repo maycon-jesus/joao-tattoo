@@ -32,4 +32,8 @@ defineSlots<{
     text-decoration: none;
     text-align: center;
 }
+
+.btn:hover {
+    outline: 2px solid white;
+}
 </style>
