@@ -2,13 +2,16 @@
     <section>
         <div class="custom-cols mx-auto" :class="{
             animateOut: !!imageOpen,
-            animateIn: imageClosing
+            animateIn: imageClosing,
+            tablet: isTablet,
+            mobile: isMobile
         }">
             <div class="align-center" v-for="(image, index) of images" :key=index
                 @click="(ev) => clickToOpen(image, ev)" :style="{
                     '--delay': randomDelay()
                 }">
                 <NuxtImg width="300" :src="image" alt="" class="img" />
+                <NuxtImg :src="image" alt="" class="img" aria-hidden="true" v-show="false" />
             </div>
         </div>
         <div class="preview" :class="{ close: imageClosing }" v-show="imageOpen">
@@ -27,17 +30,11 @@
 
 <script setup lang="ts">
 import config from "~/config/pages/home"
+import { viewportStore } from "~/store/viewport";
 const imagesToLoad = config.introduction.imagesTattoos
-
-function getRandomImage(imageExists: string[]) {
-    const image = imagesToLoad[Math.floor(imagesToLoad.length * Math.random())]
-    const imagesDoNotRepeat = imageExists.slice(-10)
-    if (imagesDoNotRepeat.includes(image)) return getRandomImage(imageExists)
-    return image
-}
+const viewport = viewportStore()
 const imageOpen = ref<null | string>(null)
 const imageClosing = ref<boolean>(false)
-
 const imageCloneParams = ref<{
     left: number,
     top: number,
@@ -49,6 +46,16 @@ const imageCloneParams = ref<{
     width: 0,
     height: 0,
 })
+
+function getRandomImage(imageExists: string[]) {
+    const image = imagesToLoad[Math.floor(imagesToLoad.length * Math.random())]
+    const imagesDoNotRepeat = imageExists.slice(-10)
+    if (imagesDoNotRepeat.includes(image)) return getRandomImage(imageExists)
+    return image
+}
+
+const isTablet = computed(() => viewport.isTablet)
+const isMobile = computed(() => viewport.isMobile)
 
 const clickToOpen = (image: string, ev: MouseEvent) => {
     imageOpen.value = image
@@ -109,21 +116,31 @@ onMounted(() => {
 </script>
 
 <style lang=scss scoped>
-@use "sass:math" as *;
-
 .primary--text {
     color: var(--theme-primary)
 }
 
 .custom-cols {
-    columns: 3;
-    width: calc((300px + 1rem) * 3);
+    --columns-count: 3;
+    columns: var(--columns-count);
+    width: calc((300px + 30px) * var(--columns-count));
+    gap: 0;
 
     &>* {
-        padding: 2rem;
+        padding: 15px;
         display: flex;
         justify-content: center;
-        width: calc(300px + 1rem);
+        width: calc(300px + 30px);
+        box-sizing: border-box;
+        display: block;
+    }
+
+    &.tablet {
+        --columns-count: 2;
+    }
+
+    &.mobile {
+        --columns-count: 1;
     }
 
     @keyframes imageIn {
@@ -220,6 +237,7 @@ onMounted(() => {
             top: var(--top);
             left: var(--left);
             height: var(--height);
+            width: 330px;
         }
 
         100% {
@@ -227,6 +245,7 @@ onMounted(() => {
             top: 50%;
             left: 50%;
             height: 75vh;
+            width: 75vw;
         }
     }
 
@@ -236,6 +255,7 @@ onMounted(() => {
             top: var(--top);
             left: var(--left);
             height: var(--height);
+            width: 330px;
         }
 
         100% {
@@ -243,6 +263,7 @@ onMounted(() => {
             top: 50%;
             left: 50%;
             height: 75vh;
+            width: 75vw;
         }
     }
 
@@ -252,9 +273,11 @@ onMounted(() => {
         top: 50%;
         left: 50%;
         height: 75vh;
-        animation: animateImageCloneOpen 600ms cubic-bezier(.5, 1, .2, 1) normal;
-        height: 75vh;
+        width: 75vw;
+        animation: animateImageCloneOpen 600ms cubic-bezier(.5, 1, .2, 1) normal forwards;
         max-height: 75vh;
+        max-width: 75vw;
+        object-fit: contain;
     }
 }
 
