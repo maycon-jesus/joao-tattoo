@@ -48,6 +48,7 @@ function getRandomImage(imageExists: string[]) {
 }
 
 const imageScrollHeight = computed(() => {
+    if (props.mobile) return `${containerHeight.value}px`
     return `${containerHeight.value / 2}px`
 })
 

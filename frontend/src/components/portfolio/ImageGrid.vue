@@ -10,7 +10,7 @@
                 @click="(ev) => clickToOpen(image, ev)" :style="{
                     '--delay': randomDelay()
                 }">
-                <NuxtImg width="300" :src="image" alt="" class="img" />
+                <NuxtImg width="290" :src="image" alt="" class="img" />
                 <NuxtImg :src="image" alt="" class="img" aria-hidden="true" v-show="false" />
             </div>
         </div>
@@ -123,14 +123,14 @@ onMounted(() => {
 .custom-cols {
     --columns-count: 3;
     columns: var(--columns-count);
-    width: calc((300px + 30px) * var(--columns-count));
+    width: calc((290px + 30px) * var(--columns-count));
     gap: 0;
 
     &>* {
         padding: 15px;
         display: flex;
         justify-content: center;
-        width: calc(300px + 30px);
+        width: calc(290px + 30px);
         box-sizing: border-box;
         display: block;
     }
