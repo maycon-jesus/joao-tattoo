@@ -11,7 +11,7 @@
                     '--delay': randomDelay()
                 }">
                 <NuxtImg width="290" :src="image" alt="" class="img" />
-                <NuxtImg :src="image" alt="" class="img" aria-hidden="true" v-show="false" />
+                <NuxtImg :src="image" alt="" aria-hidden="true" v-show="false" />
             </div>
         </div>
         <div class="preview" :class="{ close: imageClosing }" v-show="imageOpen">
@@ -133,6 +133,10 @@ onMounted(() => {
         width: calc(290px + 30px);
         box-sizing: border-box;
         display: block;
+
+        .img {
+            cursor: pointer;
+        }
     }
 
     &.tablet {
