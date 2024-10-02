@@ -2,7 +2,7 @@
     <section class="section-container gap-x-4" :class="{
         mobile: isMobile
     }">
-        <div class="background-image" v-if="isMobile"></div>
+        <div class="background-image"></div>
 
         <div class="left" :class="{
             'pl-12': !isMobile,
@@ -11,19 +11,19 @@
             <div class="text-wrapper">
                 <h1 class="mb-6" un-text="4xl sm:5xl md:6xl" v-html=titleHtml></h1>
                 <p class="description" un-text="lg">{{ config.introduction.descriptionText }}</p>
-                <div class="mt-6">
+                <div class="mt-6 flex justify-start items-start gap-4">
                     <CustomButtonBlur :to="{
                         name: 'contato'
                     }">
                         {{ config.introduction.buttons.estimateText }}</CustomButtonBlur>
-                    <CustomButtonBlur>{{ config.introduction.buttons.worksText }}</CustomButtonBlur>
+                    <CustomButtonBlur color="white">{{ config.introduction.buttons.worksText }}</CustomButtonBlur>
                 </div>
             </div>
         </div>
-        <div class="right" v-if="!isMobile">
+        <!-- <div class="right" v-if="!isMobile">
             <div class="background-image"></div>
-            <!-- <HomeIntroRight :mobile="isMobile" /> -->
-        </div>
+            <HomeIntroRight :mobile="isMobile" />
+        </div> -->
     </section>
 </template>
 
@@ -45,16 +45,18 @@ const budgetSocialUrl = budgetSocial?.url || '/'
 
 <style lang="scss" scoped>
 .section-container {
-    display: grid;
+    display: flex;
     min-height: 100vh;
     box-sizing: border-box;
-    grid-template-columns: repeat(2, 1fr);
     position: relative;
+    justify-content: center;
+    align-items: center;
+}
 
-    &>* {
-        z-index: 1;
+@media (max-height: 500px) {
+    .section-container {
+        padding-top: 120px;
     }
-
 }
 
 .background-image {
@@ -76,6 +78,7 @@ const budgetSocialUrl = budgetSocial?.url || '/'
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     h1 {
         font-family: "Raleway", sans-serif;
@@ -92,14 +95,7 @@ const budgetSocialUrl = budgetSocial?.url || '/'
     }
 }
 
-.right {
-    position: relative;
-}
-
 .section-container.mobile {
-    padding-top: 120px;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: auto 450px;
 
     .left {
         margin-bottom: 50px;
