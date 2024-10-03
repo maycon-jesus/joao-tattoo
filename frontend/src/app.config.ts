@@ -11,7 +11,7 @@ export default defineAppConfig<any>({
             menuBackground: '#191919',
             'background-text': '#FCFAFA',
             'background2-text': 'rgba(255, 255, 255, 0.6509803922)',
-            primary: '#f8133c'
+            primary: '#ef233c'
         }
     },
 

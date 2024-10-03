@@ -2,10 +2,23 @@ export default {
     introduction: {
         titleText: '%Especialista% em Geek & BlackWork',
         descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
-        buttons: {
-            estimateText: 'Solicitar orçamento',
-            worksText: 'Meus trabalhos'
-        },
+
+        buttons: [
+            {
+                text: 'Solicitar Orçamento',
+                linkExternal: '/orcamento',
+                color: 'primary'
+            },
+            {
+                text: 'Meus trabalhos',
+                linkInternal: {
+                    name: 'portfolio'
+                },
+                color: 'normal'
+            }
+        ],
+
+        // Deprecated
         imagesTattoos: [
             '/home/slider1.jpg',
             '/home/slider2.jpg',
@@ -71,5 +84,33 @@ export default {
         buttonAboutMeText: 'Sobre mim',
         imagemTop: '/aboutme/top.png',
         imagemBottom: '/aboutme/back.png',
+    }
+} as {
+    introduction: {
+        titleText: string,
+        descriptionText: string,
+        buttons: Array<{
+            text: string,
+            linkExternal?: string,
+            linkInternal?: {
+                name: string
+            }
+            color: 'primary' | 'normal'
+        }>,
+        imagesTattoos?: string[],
+        profileImages?: string[]
+    },
+    services: Array<{
+        icon: string,
+        title: string,
+        description: string
+    }>,
+    imagesScroll: string[],
+    aboutMe: {
+        titleText: string,
+        descriptionText: string,
+        buttonAboutMeText: string,
+        imagemTop: string,
+        imagemBottom: string
     }
 }
