@@ -12,11 +12,10 @@
                 <h1 class="mb-6" un-text="4xl sm:5xl md:6xl" v-html=titleHtml></h1>
                 <p class="description" un-text="lg">{{ config.introduction.descriptionText }}</p>
                 <div class="mt-6 flex justify-start items-start gap-4">
-                    <CustomButtonBlur :to="{
-                        name: 'contato'
-                    }">
-                        {{ config.introduction.buttons.estimateText }}</CustomButtonBlur>
-                    <CustomButtonBlur color="white">{{ config.introduction.buttons.worksText }}</CustomButtonBlur>
+
+                    <CustomButtonBlur v-for="(btn, index) of config.introduction.buttons" :to="btn.linkInternal"
+                        :href="btn.linkExternal" target="_blank" :key="index" :color="btn.color">
+                        {{ btn.text }}</CustomButtonBlur>
                 </div>
             </div>
         </div>
@@ -28,8 +27,9 @@
 </template>
 
 <script lang="ts" setup>
-import config from "~/config/pages/home"
-const titleHtml = config.introduction.titleText.replace(/%(.+)%/g, '<span class="primary-text">$1</span>')
+import _config from "~/config/pages/home"
+const config = ref(_config)
+const titleHtml = config.value.introduction.titleText.replace(/%(.+)%/g, '<span class="primary-text">$1</span>')
 
 const { socials } = useAppConfig()
 const { breakpoint } = useViewport()

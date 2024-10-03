@@ -10,9 +10,9 @@
             <slot name="default"></slot>
         </span>
     </component> -->
-    <div class="button-container" :class="{
+    <NuxtLink v-if="props.to" :to="props.to" class="button-container" :class="{
         'button--primary': color === 'primary' || !color,
-        'button--white': color === 'white'
+        'button--normal': color === 'normal'
     }">
         <div class="bg"></div>
         <span class="mask">
@@ -21,7 +21,19 @@
         <button type="button" name="Hover">
             <slot name="default"></slot>
         </button>
-    </div>
+    </NuxtLink>
+    <component v-else class="button-container" :is="props.href ? 'a' : 'button'" :class="{
+        'button--primary': color === 'primary' || !color,
+        'button--normal': color === 'normal'
+    }">
+        <div class="bg"></div>
+        <span class="mask">
+            <slot name="default"></slot>
+        </span>
+        <button type="button" name="Hover">
+            <slot name="default"></slot>
+        </button>
+    </component>
 </template>
 
 <script lang="ts" setup>
@@ -31,7 +43,7 @@ const props = defineProps<{
     href?: string,
     to?: RouteLocationAsPathGeneric | RouteLocationAsRelativeGeneric,
     target?: "_blank",
-    color?: "primary" | "white"
+    color?: "primary" | "normal"
 }>()
 defineSlots<{
     default: () => string
@@ -47,12 +59,16 @@ defineSlots<{
     --border: none;
 }
 
-.button--white {
+.button--normal {
     --text-color: #fff;
     --background-color: transparent;
     --hover-text-color: #fff;
     --hover-background-color: var(--theme-primary);
     --border: 1px solid white;
+}
+
+button {
+    padding: 0;
 }
 
 .button-container {

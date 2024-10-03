@@ -13,7 +13,7 @@
                     <CustomButtonBlur :to="{
                         name: 'contato'
                     }">
-                        {{ config.introduction.buttons.estimateText }}</CustomButtonBlur>
+                        Solicitar orçamento</CustomButtonBlur>
                 </div>
             </div>
         </div>
