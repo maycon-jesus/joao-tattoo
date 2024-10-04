@@ -1,7 +1,7 @@
 export default {
     introduction: {
-        titleText: '%Especialista% em Geek & BlackWork',
-        descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+        titleText: '%Especialista% em tattoos Geek & BlackWork',
+        descriptionText: '\"É sempre um bom dia para uma nova tatuagem\"',
 
         buttons: [
             {

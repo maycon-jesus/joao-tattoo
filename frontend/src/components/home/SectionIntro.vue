@@ -1,18 +1,20 @@
 <template>
-    <section class="section-container gap-x-4" :class="{
-        mobile: isMobile
-    }">
+    <section class="section-container gap-x-4" :class="{ 'margin-reader': marginHeader }">
         <div class="background-image"></div>
 
         <div class="left" :class="{
-            'pl-12': !isMobile,
+            // 'pl-12': !isMobile,
             'px-6': isMobile
         }">
             <div class="text-wrapper">
-                <h1 class="mb-6" un-text="4xl sm:5xl md:6xl" v-html=titleHtml></h1>
-                <p class="description" un-text="lg">{{ config.introduction.descriptionText }}</p>
-                <div class="mt-6 flex justify-start items-start gap-4">
-
+                <NuxtImg class="img mx-auto block mb-8" :class="{ mobile: isMobile }" src="/logos/logo-branca.png"
+                    width="300" alt="" />
+                <h1 class="mb-8 text-center" :class="{
+                    'text-5xl': isMobile,
+                    'text-7xl': !isMobile
+                }" v-html=titleHtml></h1>
+                <p class="description text-center mb-8" un-text="xl">{{ config.introduction.descriptionText }}</p>
+                <div class="flex justify-center items-start gap-4 flex-wrap">
                     <CustomButtonBlur v-for="(btn, index) of config.introduction.buttons" :to="btn.linkInternal"
                         :href="btn.linkExternal" target="_blank" :key="index" :color="btn.color">
                         {{ btn.text }}</CustomButtonBlur>
@@ -34,13 +36,20 @@ const titleHtml = config.value.introduction.titleText.replace(/%(.+)%/g, '<span 
 const { socials } = useAppConfig()
 const { breakpoint } = useViewport()
 const img = useImage()
+const marginHeader = ref(false)
 
 const isMobile = computed(() => {
-    return breakpoint.value === 'xs' || breakpoint.value === 'sm' || breakpoint.value === 'md'
+    return breakpoint.value === 'xs' || breakpoint.value === 'sm'
 })
 
 const budgetSocial = socials.find(s => s.tags?.includes('home-section-intro-budget'))
 const budgetSocialUrl = budgetSocial?.url || '/'
+
+onNuxtReady(() => {
+    if (document.documentElement.clientHeight < 800) {
+        marginHeader.value = true
+    }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +60,10 @@ const budgetSocialUrl = budgetSocial?.url || '/'
     position: relative;
     justify-content: center;
     align-items: center;
+
+    &.margin-reader {
+        padding-top: 80px;
+    }
 }
 
 @media (max-height: 500px) {
@@ -87,18 +100,22 @@ const budgetSocialUrl = budgetSocial?.url || '/'
     }
 
     .text-wrapper {
-        max-width: 700px;
+        max-width: 800px;
+
+        .img {
+            height: 100%;
+            max-width: 80%;
+
+            &.mobile {
+                width: 200px;
+            }
+        }
     }
 
     .description {
         color: #ffffffa6;
-    }
-}
-
-.section-container.mobile {
-
-    .left {
-        margin-bottom: 50px;
+        font-family: "Courier";
+        font-style: italic;
     }
 }
 </style>
