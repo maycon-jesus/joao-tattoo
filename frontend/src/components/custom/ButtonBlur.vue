@@ -22,7 +22,7 @@
             <slot name="default"></slot>
         </button>
     </NuxtLink>
-    <component v-else class="button-container" :is="props.href ? 'a' : 'button'" :class="{
+    <component v-else class="button-container" :is="props.href ? 'a' : 'div'" :class="{
         'button--primary': color === 'primary' || !color,
         'button--normal': color === 'normal'
     }">
